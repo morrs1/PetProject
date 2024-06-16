@@ -1,4 +1,4 @@
-package org.example.petproject;
+package org.example.petproject.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
