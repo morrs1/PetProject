@@ -8,4 +8,6 @@ module org.example.petproject {
     exports org.example.petproject;
     exports org.example.petproject.controllers;
     opens org.example.petproject.controllers to javafx.fxml;
+    exports org.example.petproject.core;
+    opens org.example.petproject.core to javafx.fxml;
 }
