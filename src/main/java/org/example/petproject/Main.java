@@ -12,5 +12,6 @@ public class Main extends Application {
         SceneController sceneController = new SceneController(stage);
         sceneController.setScene(Scenes.MAIN_WINDOW);
         stage.show();
+//        System.out.println(SceneLoader.getInstance().getScenes().get("laboratoryWindow"));
     }
 }
