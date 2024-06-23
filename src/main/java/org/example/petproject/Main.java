@@ -9,7 +9,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage){
         stage.setTitle("Hello!");
-        SceneController sceneController = new SceneController(stage);
+        SceneController sceneController = SceneController.getInstance(stage);
         sceneController.setScene(Scenes.MAIN_WINDOW);
         stage.show();
 //        System.out.println(SceneLoader.getInstance().getScenes().get("laboratoryWindow"));
