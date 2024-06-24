@@ -1,6 +1,0 @@
-{
-  "scenes": {
-    "mainWindow": "mainWindow.fxml",
-    "laboratoryWindow": "laboratoryWindow.fxml"
-  }
-}
