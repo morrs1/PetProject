@@ -22,4 +22,7 @@ public class MainWindowController {
     @FXML protected void onGoToLabButtonClick() {
         SceneController.getInstance().setScene(Scenes.LABORATORY_WINDOW);
     }
+    @FXML protected void onGoToTestButtonClick() {
+        SceneController.getInstance().setScene(Scenes.TEST_WINDOW);
+    }
 }

@@ -1,15 +1,19 @@
 package org.example.petproject.core;
 
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
 import org.example.petproject.core.classes.SceneLoader;
 import org.example.petproject.core.enums.Scenes;
 
+import java.util.Stack;
+
 
 public class SceneController {
     @Getter
     private static SceneController instance;
-     Stage stage;
+    Stage stage;
+    private final Stack<Scene> stackOfScenes = new Stack<>();
 
     public static SceneController getInstance(Stage stage) {
         if (instance == null) {
@@ -21,11 +25,16 @@ public class SceneController {
 
 
     public void setScene(Scenes scene) {
+        stackOfScenes.push(instance.stage.getScene());
         instance.stage.setScene(SceneLoader.getInstance().getScenes().get(scene.getName()));
     }
 
+    public void setPreviousScene() {
+        if (!stackOfScenes.isEmpty()) instance.stage.setScene(stackOfScenes.pop());
+    }
 
-    private SceneController(){
+
+    private SceneController() {
 
     }
 }

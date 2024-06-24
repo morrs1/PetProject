@@ -16,6 +16,7 @@
          <CheckBox layoutX="449.0" layoutY="43.0" mnemonicParsing="false" onAction="#onTestCheckBoxClick" text="CheckBox" />
          <Label fx:id="testLabel" layoutX="16.0" layoutY="36.0" prefHeight="32.0" prefWidth="411.0" text="Label" />
          <Button layoutX="254.0" layoutY="88.0" mnemonicParsing="false" onAction="#onGoToLabButtonClick" text="go to lab" />
+         <Button layoutX="401.0" layoutY="101.0" mnemonicParsing="false" onAction="#onGoToTestButtonClick" text="go to test" />
       </children>
    </AnchorPane>
 

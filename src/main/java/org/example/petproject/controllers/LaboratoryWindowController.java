@@ -10,8 +10,13 @@ public class LaboratoryWindowController {
     private Button backToMenuButton;
 
     @FXML
-    private void onBackToMenuButtonClicked(){
-        SceneController.getInstance().setScene(Scenes.MAIN_WINDOW);
+    protected void onBackToMenuButtonClick(){
+        SceneController.getInstance().setPreviousScene();
+    }
+
+    @FXML
+    protected void onGoToTestButtonClick(){
+        SceneController.getInstance().setScene(Scenes.TEST_WINDOW);
     }
 
 }
