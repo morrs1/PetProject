@@ -1,4 +1,4 @@
-package org.example.petproject.core;
+package org.example.petproject.controllers;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;

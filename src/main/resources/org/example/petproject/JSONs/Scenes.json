@@ -1,7 +1,6 @@
 {
   "scenes": {
     "mainWindow": "FXMLs/mainWindow.fxml",
-    "laboratoryWindow": "FXMLs/laboratoryWindow.fxml",
-    "testWindow": "FXMLs/testWindow.fxml"
+    "laboratoryWindow": "FXMLs/laboratoryWindow.fxml"
   }
 }

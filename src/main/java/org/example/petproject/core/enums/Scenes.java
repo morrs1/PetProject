@@ -7,7 +7,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Scenes {
     MAIN_WINDOW("mainWindow"),
-    LABORATORY_WINDOW("laboratoryWindow"),
-    TEST_WINDOW("testWindow");
+    LABORATORY_WINDOW("laboratoryWindow");
     private final String name;
 }
