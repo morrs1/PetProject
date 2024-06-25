@@ -1,5 +1,7 @@
 package org.example.petproject.core.classes;
 
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -8,11 +10,11 @@ import javafx.stage.StageStyle;
  */
 public class StageConfigurator {
 
-    public static Stage configureStage(Stage primaryStage) {
-        primaryStage.setTitle("Hello!");
-        primaryStage.setResizable(false);
+    public static void configureStage(Stage primaryStage) {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-
-        return primaryStage;
+        primaryStage.setWidth(600);
+        primaryStage.setHeight(400);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
     }
 }

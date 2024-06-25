@@ -1,0 +1,11 @@
+.button:hover {
+    /* Эффект при наведении */
+    -fx-translate-y: -2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 15, 0, 0, 8);
+}
+
+.button:pressed {
+    /* Эффект при нажатии */
+    -fx-translate-y: +2px;
+    -fx-effect: null;
+}

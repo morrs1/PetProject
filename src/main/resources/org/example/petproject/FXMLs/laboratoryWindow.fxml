@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.LaboratoryWindowController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" text="Button" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: black;" stylesheets="@../CSSs/backButton.css" />
       <Button layoutX="559.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="26.0" prefWidth="26.0" />
    </children>
 </AnchorPane>
