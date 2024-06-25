@@ -12,8 +12,8 @@ public class StageConfigurator {
 
     public static void configureStage(Stage primaryStage) {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setWidth(600);
-        primaryStage.setHeight(400);
+        primaryStage.setWidth(700);
+        primaryStage.setHeight(500);
         primaryStage.centerOnScreen();
         primaryStage.show();
     }

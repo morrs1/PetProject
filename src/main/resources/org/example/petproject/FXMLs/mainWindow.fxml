@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.menu.MainWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.menu.MainWindowController">
    <children>
-      <Button layoutX="224.0" layoutY="221.0" mnemonicParsing="false" onAction="#onGoToLabButtonClick" prefHeight="80.0" prefWidth="150.0" text="Лабораторная" textAlignment="CENTER">
+      <Button layoutX="260.0" layoutY="273.0" mnemonicParsing="false" onAction="#onGoToLabButtonClick" prefHeight="100.0" prefWidth="180.0" stylesheets="@../CSSs/backButton.css" text="Лабораторная" textAlignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="225.0" layoutY="97.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" text="Button" />
-      <Button layoutX="559.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="26.0" prefWidth="26.0" />
+      <Button layoutX="260.0" layoutY="122.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Button" />
+      <Button layoutX="659.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="26.0" prefWidth="26.0" />
    </children>
 </AnchorPane>
