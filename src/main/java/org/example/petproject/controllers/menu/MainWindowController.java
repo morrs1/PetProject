@@ -5,6 +5,9 @@ import org.example.petproject.controllers.BaseController;
 import org.example.petproject.controllers.SceneController;
 import org.example.petproject.core.enums.Scenes;
 
+/**
+ * Класс для управления сценой с mainMenu
+ */
 public class MainWindowController extends BaseController {
     @FXML
     protected void onGoToLabButtonClick() {

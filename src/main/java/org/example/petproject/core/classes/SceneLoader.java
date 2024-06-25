@@ -10,7 +10,12 @@ import org.example.petproject.core.json.ScenesJson;
 import java.io.IOException;
 import java.util.HashMap;
 
-
+/**
+ * Класс для быстрой загрузки сцен
+ *
+ * <p>
+ * scenes хранит в себе коллекцию сцен, загруженных из JSON файла.
+ */
 @Getter
 public class SceneLoader {
     private static SceneLoader instance;

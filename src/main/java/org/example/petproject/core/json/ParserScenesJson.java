@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Класс для парсинга JSON файла со сценами
+ */
 public class ParserScenesJson {
     public static ScenesJson parseScenesJson(String pathToJson){
         ObjectMapper objectMapper = new ObjectMapper();

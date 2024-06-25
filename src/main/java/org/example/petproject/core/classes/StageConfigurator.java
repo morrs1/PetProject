@@ -3,6 +3,9 @@ package org.example.petproject.core.classes;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Класс для конфигурации изначального Stage
+ */
 public class StageConfigurator {
 
     public static Stage configureStage(Stage primaryStage) {

@@ -8,7 +8,9 @@ import org.example.petproject.core.enums.Scenes;
 
 import java.util.Stack;
 
-
+/**
+ * Класс для управления сценами(какая сцена будет отображаться на Stage)
+ */
 public class SceneController {
     @Getter
     private static SceneController instance;
