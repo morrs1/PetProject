@@ -1,0 +1,17 @@
+.toggle-button:selected {
+    -fx-background-color: #CB0000;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.toggle-button {
+    -fx-background-color: #A9A9A9;
+    -fx-translate-y: -0.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 3, 5);
+}
+
+.toggle-button:pressed {
+    /* Эффект при нажатии */
+    -fx-translate-y: +1px;
+    -fx-effect: null;
+}

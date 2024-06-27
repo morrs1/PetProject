@@ -3,10 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers.FirstTaskController">
    <children>
@@ -18,7 +21,11 @@
       </AnchorPane>
       <AnchorPane layoutX="500.0" layoutY="58.0" prefHeight="442.0" prefWidth="200.0" style="-fx-background-color: #919191;">
          <children>
-            <Button layoutX="20.0" layoutY="362.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" text="Сохранить" />
+            <Button layoutX="20.0" layoutY="362.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" stylesheets="@../CSSs/SaveButton.css" text="Сохранить">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Button>
             <GridPane layoutY="23.0" prefHeight="260.0" prefWidth="200.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,13 +36,28 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="81.0" prefWidth="120.0" text="ToggleButton" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <toggleGroup>
                         <ToggleGroup fx:id="FirstTaskToggleButtonsGroup" />
                      </toggleGroup>
+                     <graphic>
+                        <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/backButtonImg.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="81.0" prefWidth="120.0" text="ToggleButton" toggleGroup="$FirstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="81.0" prefWidth="120.0" text="ToggleButton" toggleGroup="$FirstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$FirstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$FirstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </ToggleButton>
                </children>
             </GridPane>
          </children>
