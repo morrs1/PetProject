@@ -7,7 +7,7 @@
 .button:hover {
     /* Эффект при наведении */
     -fx-translate-y: -0.5px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 255, 0.8), 10, 0, 0, 5);
+    -fx-effect: dropshadow(gaussian, rgba(0,80,140, 0.8), 15, 0, 5, 7);
 }
 
 .button:pressed {
