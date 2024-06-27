@@ -1,7 +1,13 @@
+.button{
+    -fx-background-color: #A9A9A9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
 .button:hover {
     /* Эффект при наведении */
     -fx-translate-y: -0.5px;
-    -fx-effect: dropshadow(gaussian, rgba(220, 20, 60, 0.8), 10, 0, 0, 5);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 255, 0.8), 10, 0, 0, 5);
 }
 
 .button:pressed {
@@ -10,8 +16,3 @@
     -fx-effect: null;
 }
 
-.button{
-    -fx-background-color: #CB0000;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-}
