@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.LaboratoryWindowController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.LaboratoryWindowController">
    <children>
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/backButton.css" />
       <Button layoutX="659.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/exitButton.css" />
