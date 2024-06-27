@@ -1,7 +1,7 @@
 .button:hover {
     /* Эффект при наведении */
     -fx-translate-y: -0.5px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 0, 5);
+    -fx-effect: dropshadow(gaussian, rgba(68,89,103, 0.8), 10, 0, 3, 5);
 }
 
 .button:pressed {
@@ -11,7 +11,7 @@
 }
 
 .button{
-    -fx-background-color: black;
+    -fx-background-color: rgba(68,89,103, 1);
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
 }
