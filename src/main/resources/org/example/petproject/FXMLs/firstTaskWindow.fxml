@@ -50,12 +50,18 @@
                   </ToggleButton>
                   <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$firstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/secondImageForFirstTask.png" />
+                           </image></ImageView>
                      </graphic>
                   </ToggleButton>
                   <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$firstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/ThirdImageForFirstTask.png" />
+                           </image></ImageView>
                      </graphic>
                   </ToggleButton>
                </children>
