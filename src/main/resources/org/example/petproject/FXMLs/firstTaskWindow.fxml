@@ -37,9 +37,6 @@
               </rowConstraints>
                <children>
                   <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="FirstTaskToggleButtonsGroup" />
-                     </toggleGroup>
                      <graphic>
                         <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -47,13 +44,16 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="firstTaskToggleButtonsGroup" />
+                     </toggleGroup>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$FirstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$firstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$FirstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <ToggleButton mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" stylesheets="@../CSSs/toggleButton.css" toggleGroup="$firstTaskToggleButtonsGroup" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -62,6 +62,6 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="1.0" layoutY="58.0" prefHeight="442.0" prefWidth="498.0" />
+      <AnchorPane fx:id="paneForFirstTask" layoutX="1.0" layoutY="58.0" prefHeight="442.0" prefWidth="498.0" />
    </children>
 </AnchorPane>

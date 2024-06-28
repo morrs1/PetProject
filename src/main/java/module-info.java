@@ -16,4 +16,5 @@ module org.example.petproject {
     exports org.example.petproject.controllers;
     opens org.example.petproject.controllers to javafx.fxml;
     exports org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers to javafx.fxml;
+    opens org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers to javafx.fxml;
 }
