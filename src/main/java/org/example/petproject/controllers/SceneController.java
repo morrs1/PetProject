@@ -14,6 +14,7 @@ import java.util.Stack;
 public class SceneController {
     @Getter
     private static SceneController instance;
+    @Getter
     Stage stage;
     private final Stack<Scene> stackOfScenes = new Stack<>();
 

@@ -3,7 +3,8 @@ module org.example.petproject {
     requires javafx.fxml;
     requires static lombok;
     requires com.fasterxml.jackson.databind;
-
+    requires java.desktop;
+    requires javafx.swing;
 
     opens org.example.petproject to javafx.fxml;
     exports org.example.petproject;

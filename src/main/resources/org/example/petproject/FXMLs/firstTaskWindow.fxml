@@ -21,7 +21,7 @@
       </AnchorPane>
       <AnchorPane layoutX="500.0" layoutY="58.0" prefHeight="442.0" prefWidth="200.0" style="-fx-background-color: #919191;">
          <children>
-            <Button layoutX="20.0" layoutY="362.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" stylesheets="@../CSSs/SaveButton.css" text="Сохранить">
+            <Button layoutX="20.0" layoutY="362.0" mnemonicParsing="false" onAction="#onSaveButtonClicked" prefHeight="50.0" prefWidth="160.0" stylesheets="@../CSSs/SaveButton.css" text="Сохранить">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
@@ -68,6 +68,6 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneForFirstTask" layoutX="1.0" layoutY="58.0" prefHeight="442.0" prefWidth="498.0" />
+      <AnchorPane fx:id="paneForFirstTask" layoutX="1.0" layoutY="58.0" onMouseClicked="#onAnchorPaneClick" prefHeight="442.0" prefWidth="498.0" />
    </children>
 </AnchorPane>
