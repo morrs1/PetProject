@@ -11,6 +11,7 @@ import lombok.Getter;
 public enum Scenes {
     MAIN_WINDOW("mainWindow"),
     LABORATORY_WINDOW("laboratoryWindow"),
-    FIRST_TASK_WINDOW("firstTaskWindow"),;
+    FIRST_TASK_WINDOW("firstTaskWindow"),
+    SECOND_TASK_WINDOW("secondTaskWindow");
     private final String name;
 }

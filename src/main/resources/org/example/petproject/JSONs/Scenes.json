@@ -2,6 +2,7 @@
   "scenes": {
     "mainWindow": "FXMLs/mainWindow.fxml",
     "laboratoryWindow": "FXMLs/laboratoryWindow.fxml",
-    "firstTaskWindow": "FXMLs/firstTaskWindow.fxml"
+    "firstTaskWindow": "FXMLs/firstTaskWindow.fxml",
+    "secondTaskWindow": "FXMLs/secondTaskWindow.fxml"
   }
 }

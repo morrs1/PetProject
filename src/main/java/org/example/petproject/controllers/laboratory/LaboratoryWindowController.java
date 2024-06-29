@@ -1,13 +1,11 @@
 package org.example.petproject.controllers.laboratory;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.controllers.SceneController;
 import org.example.petproject.core.enums.Scenes;
-import org.w3c.dom.events.Event;
 
 /**
  * Класс, для управления сценой с лабой
@@ -20,6 +18,7 @@ public class LaboratoryWindowController extends BaseController {
 
         Scenes sceneToSwitch = switch (numberOfTask){
             case "1"-> Scenes.FIRST_TASK_WINDOW;
+            case "2"-> Scenes.SECOND_TASK_WINDOW;
             default -> throw new IllegalStateException("Unexpected value: " + numberOfTask);
         };
         SceneController.getInstance().setScene(sceneToSwitch);

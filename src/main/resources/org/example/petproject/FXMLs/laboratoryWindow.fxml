@@ -43,7 +43,7 @@
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
