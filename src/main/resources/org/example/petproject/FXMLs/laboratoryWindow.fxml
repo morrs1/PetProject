@@ -27,7 +27,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#onFirstButtonClick" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
