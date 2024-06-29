@@ -42,13 +42,13 @@ public class FirstTaskController extends BaseController {
         fileChooser.getExtensionFilters().add(extFilter);
 
         File file = fileChooser.showSaveDialog(SceneController.getInstance().getStage());
-
-        try {
-            ImageIO.write(SwingFXUtils.fromFXImage(imageForSave,null), "png", file);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (file != null) {
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(imageForSave, null), "png", file);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
-
 
     }
 
