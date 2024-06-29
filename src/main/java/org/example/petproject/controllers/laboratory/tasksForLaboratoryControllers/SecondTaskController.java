@@ -3,4 +3,5 @@ package org.example.petproject.controllers.laboratory.tasksForLaboratoryControll
 import org.example.petproject.controllers.BaseController;
 
 public class SecondTaskController extends BaseController {
+
 }
