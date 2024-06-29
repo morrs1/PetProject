@@ -67,23 +67,17 @@ public class LineShape extends AbstractShape {
 
     @Override
     public void changeSize(Directions direction) {
+        int change = 0;
         switch (direction) {
-            case UP -> {
-                line.setEndY(line.getEndY() - 1);
-                getFrame().setHeight(getFrame().getHeight() - 1);
-            }
-            case DOWN -> {
-                line.setEndY(line.getEndY() + 1);
-                getFrame().setHeight(getFrame().getHeight() + 1);
-            }
-            case LEFT -> {
-                line.setEndX(line.getEndX() - 1);
-                getFrame().setWidth(getFrame().getWidth() - 1);
-            }
-            case RIGHT -> {
-                line.setEndX(line.getEndX() + 1);
-                getFrame().setWidth(getFrame().getWidth() + 1);
-            }
+            case UP, LEFT -> change = -1;
+            case DOWN, RIGHT -> change = 1;
+        }
+        if (direction == Directions.UP || direction == Directions.DOWN) {
+            line.setEndY(line.getEndY() + change);
+            getFrame().setHeight(getFrame().getHeight() + change);
+        } else {
+            line.setEndX(line.getEndX() + change);
+            getFrame().setWidth(getFrame().getWidth() + change);
         }
     }
 
