@@ -8,11 +8,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Ellipse;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.core.enums.Directions;
+import org.example.petproject.core.enums.Shapes;
 import org.example.petproject.model.strategyShapes.AbstractShape;
 import org.example.petproject.model.strategyShapes.CircleShape;
 
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class SecondTaskController extends BaseController implements Initializable {
@@ -24,13 +26,12 @@ public class SecondTaskController extends BaseController implements Initializabl
     Button exitButton;
     AbstractShape shape;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setFocusTraversable(false);
         exitButton.setFocusTraversable(false);
         paneForShape.setFocusTraversable(true);
-        shape = new CircleShape(new Ellipse());
+        shape = Shapes.values()[new Random().nextInt(3)].getShape();
         paneForShape.getChildren().add(shape.getShape());
         paneForShape.getChildren().add(shape.getFrame());
     }

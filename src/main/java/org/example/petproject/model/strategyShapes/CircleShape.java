@@ -6,11 +6,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import org.example.petproject.core.enums.Directions;
 
-public class CircleShape extends AbstractShape{
+public class CircleShape extends AbstractShape {
     private final Ellipse circle;
+    private final Integer radius;
 
-    public CircleShape(Ellipse circle) {
+    public CircleShape(Ellipse circle, Integer radius) {
         this.circle = circle;
+        this.radius = radius;
         setupShape();
         setupFrame();
     }
@@ -18,10 +20,10 @@ public class CircleShape extends AbstractShape{
     @Override
     protected void setupFrame() {
         Rectangle currentFrame = new Rectangle(
-                circle.getCenterX() - circle.getRadiusX() -2,
+                circle.getCenterX() - circle.getRadiusX() - 2,
                 circle.getCenterY() - circle.getRadiusY() - 2,
-                2*circle.getRadiusX()+4,
-                2*circle.getRadiusY()+4
+                2 * circle.getRadiusX() + 4,
+                2 * circle.getRadiusY() + 4
         );
         currentFrame = setupRectangle(currentFrame);
         setFrame(currentFrame);
@@ -29,10 +31,10 @@ public class CircleShape extends AbstractShape{
 
     @Override
     protected void setupShape() {
-        circle.setCenterX(300);
-        circle.setCenterY(300);
+        circle.setCenterX(350);
+        circle.setCenterY(200);
         circle.setRadiusX(70);
-        circle.setRadiusY(70);
+        circle.setRadiusY(radius);
         circle.setFill(Color.TRANSPARENT);
         circle.setStroke(Color.BLACK);
         circle.setStrokeWidth(3);
@@ -64,13 +66,11 @@ public class CircleShape extends AbstractShape{
             circle.setRadiusX(circle.getRadiusX() + change);
             circle.setCenterX(circle.getCenterX() + change);
         }
-        getFrame().setX(circle.getCenterX() - circle.getRadiusX() -2);
-        getFrame().setY(circle.getCenterY() - circle.getRadiusY() -2);
-        getFrame().setWidth(2*circle.getRadiusX()+4);
-        getFrame().setHeight(2*circle.getRadiusY()+4);
+        getFrame().setX(circle.getCenterX() - circle.getRadiusX() - 2);
+        getFrame().setY(circle.getCenterY() - circle.getRadiusY() - 2);
+        getFrame().setWidth(2 * circle.getRadiusX() + 4);
+        getFrame().setHeight(2 * circle.getRadiusY() + 4);
     }
-
-
 
     @Override
     public Shape getShape() {
