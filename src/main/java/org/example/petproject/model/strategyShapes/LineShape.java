@@ -1,13 +1,7 @@
 package org.example.petproject.model.strategyShapes;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.example.petproject.core.enums.Directions;
 import javafx.scene.shape.Line;
 
@@ -29,11 +23,7 @@ public class LineShape extends AbstractShape {
                 Math.abs(line.getStartY() - line.getEndY() - 5),
                 Math.abs(line.getStartX() - line.getEndX() - 5)
         );
-        currentFrame.setFill(Color.TRANSPARENT);
-        currentFrame.setStroke(Color.BLACK);
-        currentFrame.setStrokeWidth(3.0f);
-        currentFrame.getStrokeDashArray().addAll(10.0, 20.0);
-        currentFrame.setOpacity(0.5);
+        currentFrame = setupRectangle(currentFrame);
         setFrame(currentFrame);
     }
 

@@ -5,10 +5,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.core.enums.Directions;
 import org.example.petproject.model.strategyShapes.AbstractShape;
+import org.example.petproject.model.strategyShapes.CircleShape;
 import org.example.petproject.model.strategyShapes.LineShape;
 
 import java.net.URL;
@@ -29,7 +32,7 @@ public class SecondTaskController extends BaseController implements Initializabl
         backButton.setFocusTraversable(false);
         exitButton.setFocusTraversable(false);
         paneForShape.setFocusTraversable(true);
-        shape = new LineShape(new Line());
+        shape = new CircleShape(new Ellipse());
         paneForShape.getChildren().add(shape.getShape());
         paneForShape.getChildren().add(shape.getFrame());
     }
