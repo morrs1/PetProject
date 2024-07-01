@@ -3,6 +3,7 @@
     "mainWindow": "FXMLs/mainWindow.fxml",
     "laboratoryWindow": "FXMLs/laboratoryWindow.fxml",
     "firstTaskWindow": "FXMLs/firstTaskWindow.fxml",
-    "secondTaskWindow": "FXMLs/secondTaskWindow.fxml"
+    "secondTaskWindow": "FXMLs/secondTaskWindow.fxml",
+    "thirdTaskWindow": "FXMLs/thirdTaskWindow.fxml"
   }
 }
