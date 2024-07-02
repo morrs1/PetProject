@@ -1,0 +1,4 @@
+.anchor-pane {
+    -fx-border-color: transparent transparent transparent rgba(0,0,0,0.5);
+    -fx-border-width: 3;
+}

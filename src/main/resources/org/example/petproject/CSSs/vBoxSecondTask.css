@@ -1,0 +1,7 @@
+.v-box{
+    -fx-background-color: rgb(145,145,145);
+    -fx-translate-y: -0.3px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 3, 5);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
