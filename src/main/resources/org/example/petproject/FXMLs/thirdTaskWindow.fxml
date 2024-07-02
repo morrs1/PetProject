@@ -30,24 +30,24 @@
             <VBox alignment="CENTER" layoutX="14.0" layoutY="18.0" prefHeight="300.0" prefWidth="120.0" style="-fx-spacing: 7px;" styleClass="v-box" stylesheets="@../CSSs/vBoxSecondTask.css">
                <children>
                   <ToggleButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" stylesheets="@../CSSs/toggleButtonSecondTask.css">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="secondTaskToggleButtonsGroup" />
-                     </toggleGroup>
                      <graphic>
                         <Ellipse fill="#ffffff00" radiusX="41.0" radiusY="23.0" rotate="-179.3" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
                      </graphic>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="thirdTaskToggleButtonsGroup" />
+                     </toggleGroup>
                   </ToggleButton>
-                  <ToggleButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" stylesheets="@../CSSs/toggleButtonSecondTask.css" toggleGroup="$secondTaskToggleButtonsGroup">
+                  <ToggleButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" stylesheets="@../CSSs/toggleButtonSecondTask.css" toggleGroup="$thirdTaskToggleButtonsGroup">
                      <graphic>
                         <Circle fill="#1f93ff00" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" stylesheets="@../CSSs/toggleButtonSecondTask.css" toggleGroup="$secondTaskToggleButtonsGroup">
+                  <ToggleButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" stylesheets="@../CSSs/toggleButtonSecondTask.css" toggleGroup="$thirdTaskToggleButtonsGroup">
                      <graphic>
                         <Line endX="-22.307109832763672" endY="-38.13673400878906" startX="-100.0" strokeWidth="3.0" />
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" stylesheets="@../CSSs/toggleButtonSecondTask.css" toggleGroup="$secondTaskToggleButtonsGroup">
+                  <ToggleButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" stylesheets="@../CSSs/toggleButtonSecondTask.css" toggleGroup="$thirdTaskToggleButtonsGroup">
                      <graphic>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="52.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="79.0" />
                      </graphic>

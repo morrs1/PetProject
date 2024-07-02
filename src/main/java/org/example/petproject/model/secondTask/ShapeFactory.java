@@ -11,19 +11,19 @@ import org.example.petproject.model.strategyShapes.CircleShape;
 @Setter
 public class ShapeFactory {
     public static AbstractShape create(Shape shape, Color colorOfContour, Color colorOfFill,
-                                       Integer widthOfContour, String typeOfContour) {
+                                       Integer widthOfContour, String typeOfContour, Double centerX, Double centerY) {
 
         AbstractShape finalShape = switch (shape.getClass().getSimpleName()) {
             case "Circle" -> {
                 Ellipse copiedShape = new Ellipse();
                 copiedShape.setRadiusX(50);
                 copiedShape.setRadiusY(50);
-                copiedShape.setCenterX(100);
-                copiedShape.setCenterY(100);
+                copiedShape.setCenterX(centerX);
+                copiedShape.setCenterY(centerY);
                 copiedShape.setFill(colorOfFill);
-                copiedShape.setStroke(colorOfContour);
+                copiedShape.setStroke(new Color(colorOfContour.getRed(), colorOfContour.getGreen(), colorOfContour.getBlue(), 0.3));
                 copiedShape.setStrokeWidth(widthOfContour);
-                if(typeOfContour.equals("Dotted")){
+                if (typeOfContour.equals("Dotted")) {
                     copiedShape.getStrokeDashArray().addAll(10.0, 10.0);
                 }
                 yield new ModifiedCircleShape(copiedShape);
