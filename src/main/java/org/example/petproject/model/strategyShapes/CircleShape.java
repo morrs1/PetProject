@@ -7,7 +7,7 @@ import javafx.scene.shape.Shape;
 import org.example.petproject.core.enums.Directions;
 
 public class CircleShape extends AbstractShape {
-    private final Ellipse circle;
+    protected final Ellipse circle;
     private final Integer radius;
 
     public CircleShape(Ellipse circle, Integer radius) {
@@ -16,6 +16,12 @@ public class CircleShape extends AbstractShape {
         setupShape();
         setupFrame();
     }
+
+    public CircleShape(Ellipse circle) {
+        this.circle = circle;
+        radius = 0;
+    }
+
 
     @Override
     protected void setupFrame() {
@@ -30,7 +36,7 @@ public class CircleShape extends AbstractShape {
     }
 
     @Override
-    protected void setupShape() {
+    protected  void setupShape() {
         circle.setCenterX(350);
         circle.setCenterY(200);
         circle.setRadiusX(70);

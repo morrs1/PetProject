@@ -24,7 +24,7 @@
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/backButton.css" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneForFirstTask" layoutY="58.0" prefHeight="442.0" prefWidth="422.0" />
+      <AnchorPane fx:id="paneForThirdTask" layoutY="58.0" onMouseClicked="#onPaneForFigureClick" prefHeight="442.0" prefWidth="422.0" />
       <AnchorPane layoutX="422.0" layoutY="58.0" prefHeight="442.0" prefWidth="278.0" style="-fx-background-color: #919191;">
          <children>
             <VBox alignment="CENTER" layoutX="14.0" layoutY="18.0" prefHeight="300.0" prefWidth="120.0" style="-fx-spacing: 7px;" styleClass="v-box" stylesheets="@../CSSs/vBoxSecondTask.css">
@@ -60,13 +60,13 @@
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <ColorPicker prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
+                  <ColorPicker fx:id="colorPickerForContour" prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
                   <Label alignment="CENTER" prefHeight="18.0" prefWidth="120.0" text="Цвет заливки">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <ColorPicker prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
+                  <ColorPicker fx:id="colorPikerForFill" prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
                </children></VBox>
             <VBox alignment="CENTER" layoutX="144.0" layoutY="172.0" prefHeight="145.0" prefWidth="120.0" style="-fx-spacing: 10px;" styleClass="v-box" stylesheets="@../CSSs/vBoxSecondTask.css">
                <children>
@@ -75,13 +75,13 @@
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextField maxWidth="110.0" minWidth="0.0" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #A9A9A9;" />
+                  <TextField fx:id="textFieldForWidthOfContour" maxWidth="110.0" minWidth="0.0" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #A9A9A9;" />
                   <Label alignment="CENTER" prefWidth="120.0" text="Тип контура">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
+                  <ComboBox fx:id="comboBoxForTypeOfContour" prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
                </children></VBox>
             <VBox layoutX="14.0" layoutY="325.0" prefHeight="100.0" prefWidth="250.0" styleClass="v-box" stylesheets="@../CSSs/vBoxSecondTask.css">
                <children>
@@ -107,8 +107,8 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="100.0" prefWidth="125.0" styleClass="anchor-pane" stylesheets="@../CSSs/anchorPaneSecondTask.css">
                                  <children>
-                                    <Button layoutX="12.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #A9A9A9;" stylesheets="@../CSSs/buttonSecondTask.css" text="Сохранить" />
-                                    <Button layoutX="12.0" layoutY="59.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #A9A9A9;" stylesheets="@../CSSs/buttonSecondTask.css" text="Помощь" />
+                                    <Button layoutX="12.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Сохранить" />
+                                    <Button layoutX="12.0" layoutY="59.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Помощь" />
                                  </children>
                               </AnchorPane>
                            </children>
