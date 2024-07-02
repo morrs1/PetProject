@@ -16,12 +16,12 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers.ThirdTaskController">
+<AnchorPane fx:id="mainPaneThirdTask" onKeyPressed="#onKeyPressed" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers.ThirdTaskController">
    <children>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" style="-fx-background-color: #000000;">
          <children>
-            <Button layoutX="659.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/exitButton.css" />
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/backButton.css" />
+            <Button fx:id="exitButton" layoutX="659.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/exitButton.css" />
+            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/backButton.css" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneForThirdTask" layoutY="58.0" onMouseClicked="#onPaneForFigureClick" prefHeight="442.0" prefWidth="422.0" />
@@ -96,19 +96,19 @@
                                           <Font name="Segoe UI Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="8.0" layoutY="18.0" prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
+                                    <TextField fx:id="heightForImageToSave" layoutX="8.0" layoutY="18.0" prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
                                     <Label alignment="CENTER" layoutY="44.0" prefHeight="18.0" prefWidth="126.0" text="Ширина">
                                        <font>
                                           <Font name="Segoe UI Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="8.0" layoutY="62.0" prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
+                                    <TextField fx:id="widthForImageToSave" layoutX="8.0" layoutY="62.0" prefWidth="110.0" style="-fx-background-color: #A9A9A9;" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="100.0" prefWidth="125.0" styleClass="anchor-pane" stylesheets="@../CSSs/anchorPaneSecondTask.css">
                                  <children>
-                                    <Button layoutX="12.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Сохранить" />
-                                    <Button layoutX="12.0" layoutY="59.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Помощь" />
+                                    <Button fx:id="buttonForSave" layoutX="12.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Сохранить" />
+                                    <Button fx:id="buttonForHelp" layoutX="12.0" layoutY="59.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Помощь" />
                                  </children>
                               </AnchorPane>
                            </children>
