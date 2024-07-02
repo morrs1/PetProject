@@ -26,7 +26,6 @@ public class LaboratoryWindowController extends BaseController {
             default -> throw new IllegalStateException("Unexpected value: " + numberOfTask);
         };
         SceneController.getInstance().setScene(sceneToSwitch);
-
     }
 
 }
