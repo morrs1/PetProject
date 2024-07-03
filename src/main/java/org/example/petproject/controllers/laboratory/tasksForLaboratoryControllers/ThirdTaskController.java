@@ -85,12 +85,19 @@ public class ThirdTaskController extends BaseController implements Initializable
 
 
             if (painter.getCurrentShape() != null) {
-                var previousShape = painter.getCurrentShape().getShape();
-                Color colorOfBuffShape = (Color) previousShape.getStroke();
-                previousShape.setStroke(new Color(colorOfBuffShape.getRed(), colorOfBuffShape.getGreen(), colorOfBuffShape.getBlue(), 1));
+                if(painter.getCurrentShape().getRectangle().getStroke() != null){
+                    var previousRectangle = painter.getCurrentShape().getRectangle();
+                    Color colorOfRectangle = (Color) previousRectangle.getStroke();
+                    previousRectangle.setStroke(new Color(colorOfRectangle.getRed(), colorOfRectangle.getGreen(), colorOfRectangle.getBlue(), 1));
+                } else {
+                    var previousShape = painter.getCurrentShape().getShape();
+                    Color colorOfBuffShape = (Color) previousShape.getStroke();
+                    previousShape.setStroke(new Color(colorOfBuffShape.getRed(), colorOfBuffShape.getGreen(), colorOfBuffShape.getBlue(), 1));
+                }
             }
             painter.setCurrentShape(newShape);
             paneForThirdTask.getChildren().add(newShape.getShape());
+            paneForThirdTask.getChildren().add(newShape.getRectangle());
         }
     }
 

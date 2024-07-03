@@ -26,4 +26,7 @@ public abstract class AbstractShape {
         rectangle.setOpacity(0.5);
         return rectangle;
     }
+    public Rectangle getRectangle(){
+        return new Rectangle();
+    }
 }

@@ -2,6 +2,7 @@ package org.example.petproject.model.secondTask;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import lombok.Setter;
@@ -49,6 +50,17 @@ public class ShapeFactory {
                 }
                 yield new ModifiedCircleShape(copiedShape);
             }
+            case "Line" ->{
+                Line copiedShape = new Line();
+                copiedShape.setStroke(colorOfFill);
+                copiedShape.setStrokeWidth(3);
+                copiedShape.setStartX(centerX - 50);
+                copiedShape.setStartY(centerY - 50);
+                copiedShape.setEndX(centerX + 50);
+                copiedShape.setEndY(centerY + 50);
+                yield new ModifiedLineShape(copiedShape, colorOfContour,widthOfContour, typeOfContour);
+            }
+
             default -> throw new IllegalStateException("Unexpected value: " + shape.getClass().getSimpleName());
         };
     }

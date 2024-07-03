@@ -7,12 +7,15 @@ import javafx.scene.shape.Line;
 
 
 public class LineShape extends AbstractShape {
-    private final Line line;
+    protected Line line;
 
     public LineShape(Line line) {
         this.line = line;
         setupShape();
         setupFrame();
+    }
+    public LineShape(){
+
     }
 
     @Override
