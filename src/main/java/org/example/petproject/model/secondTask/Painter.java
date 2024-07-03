@@ -1,7 +1,6 @@
 package org.example.petproject.model.secondTask;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.petproject.model.strategyShapes.AbstractShape;

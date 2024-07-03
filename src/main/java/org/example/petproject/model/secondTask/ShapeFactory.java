@@ -1,12 +1,11 @@
 package org.example.petproject.model.secondTask;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Shape;
 import lombok.Setter;
 import org.example.petproject.model.strategyShapes.AbstractShape;
-import org.example.petproject.model.strategyShapes.CircleShape;
+
 
 @Setter
 public class ShapeFactory {
