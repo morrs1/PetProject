@@ -14,6 +14,7 @@ import org.example.petproject.core.enums.Directions;
 import org.example.petproject.model.secondTask.ModifiedCircleShape;
 import org.example.petproject.model.secondTask.Painter;
 import org.example.petproject.model.secondTask.ShapeFactory;
+import org.example.petproject.model.strategyShapes.AbstractShape;
 
 
 import java.net.URL;
@@ -75,7 +76,7 @@ public class ThirdTaskController extends BaseController implements Initializable
         if (!Objects.equals(textFieldForWidthOfContour.getText(), "") && !Objects.equals(comboBoxForTypeOfContour.getValue(), null)
                 && thirdTaskToggleButtonsGroup.getSelectedToggle() != null) {
 
-            ModifiedCircleShape newShape = (ModifiedCircleShape) ShapeFactory.create((Shape)
+            AbstractShape newShape =  ShapeFactory.create((Shape)
                             (((ToggleButton) thirdTaskToggleButtonsGroup.getSelectedToggle()).getChildrenUnmodifiable().getFirst()),
                     colorPickerForContour.getValue(),
                     colorPikerForFill.getValue(),
