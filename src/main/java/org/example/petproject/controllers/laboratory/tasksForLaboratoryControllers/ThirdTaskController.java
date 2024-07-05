@@ -1,7 +1,7 @@
 package org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers;
 
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -51,10 +51,14 @@ public class ThirdTaskController extends BaseController implements Initializable
     @FXML
     AnchorPane mainPaneThirdTask;
 
-    Tooltip tooltipForHelp = new Tooltip("Это приложение выполняет функцию графического редактора,\n " +
-            "настройте изображение " +
-            "в правой панели и щелкните лкм по левой панели,\n после добавления на панель фигуры, вы можете изменять " +
-            "ее размеры \n(клавиши \"<\" \">\" \"+\" \"-\" и менять ее расположение на клавиши стрелок ");
+    Tooltip tooltipForHelp = new Tooltip("""
+            Это приложение выполняет функцию графического редактора,
+             \
+            настройте изображение \
+            в правой панели и щелкните лкм по левой панели,
+             после добавления на панель фигуры, вы можете изменять \
+            ее размеры\s
+            (клавиши "<" ">" "+" "-" и менять ее расположение на клавиши стрелок\s""");
     Painter painter = new Painter();
 
     @Override
@@ -117,7 +121,7 @@ public class ThirdTaskController extends BaseController implements Initializable
     }
 
     @FXML
-    protected void onHelpButtonReleased(MouseEvent mouseEvent) {
+    protected void onHelpButtonReleased() {
         tooltipForHelp.hide();
     }
 
