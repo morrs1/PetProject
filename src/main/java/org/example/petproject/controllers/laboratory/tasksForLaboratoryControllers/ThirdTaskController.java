@@ -89,10 +89,12 @@ public class ThirdTaskController extends BaseController implements Initializable
 
     @FXML
     protected void onKeyPressed(KeyEvent keyEvent) {
-        switch (keyEvent.getCode()) {
-            case UP, DOWN, LEFT, RIGHT -> onArrowsPressed(keyEvent);
-            case EQUALS, MINUS -> onPlusMinusPressed(keyEvent);
-            case COMMA, PERIOD -> onLessGreaterPressed(keyEvent);
+        if (painter.getCurrentShape() != null) {
+            switch (keyEvent.getCode()) {
+                case UP, DOWN, LEFT, RIGHT -> onArrowsPressed(keyEvent);
+                case EQUALS, MINUS -> onPlusMinusPressed(keyEvent);
+                case COMMA, PERIOD -> onLessGreaterPressed(keyEvent);
+            }
         }
     }
 
