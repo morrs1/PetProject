@@ -11,7 +11,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.core.enums.Directions;
-import org.example.petproject.model.secondTask.ModifiedCircleShape;
 import org.example.petproject.model.secondTask.Painter;
 import org.example.petproject.model.secondTask.ShapeFactory;
 import org.example.petproject.model.strategyShapes.AbstractShape;
@@ -53,20 +52,7 @@ public class ThirdTaskController extends BaseController implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        thirdTaskToggleButtonsGroup.getToggles().forEach(toggle -> ((ToggleButton) toggle).setFocusTraversable(false));
-        colorPikerForFill.setFocusTraversable(false);
-        colorPickerForContour.setFocusTraversable(false);
-        textFieldForWidthOfContour.setFocusTraversable(false);
-        comboBoxForTypeOfContour.setFocusTraversable(false);
-        heightForImageToSave.setFocusTraversable(false);
-        widthForImageToSave.setFocusTraversable(false);
-        buttonForSave.setFocusTraversable(false);
-        buttonForHelp.setFocusTraversable(false);
-        backButton.setFocusTraversable(false);
-        exitButton.setFocusTraversable(false);
-        mainPaneThirdTask.setFocusTraversable(true);
         Arrays.asList("Dotted", "Solid").forEach(value -> comboBoxForTypeOfContour.getItems().add(value));
-
     }
 
     @FXML
