@@ -12,6 +12,7 @@ import javafx.stage.FileChooser;
 import org.example.petproject.controllers.BaseController;
 import javafx.embed.swing.SwingFXUtils;
 import org.example.petproject.controllers.SceneController;
+import org.example.petproject.core.classes.FileSaver;
 
 import javax.imageio.ImageIO;
 import java.io.*;
@@ -36,21 +37,9 @@ public class FirstTaskController extends BaseController {
 
     @FXML
     protected void onSaveButtonClicked() {
-        WritableImage imageForSave = paneForFirstTask.snapshot(null, null);
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().add(extFilter);
-
-        File file = fileChooser.showSaveDialog(SceneController.getInstance().getStage());
-        if (file != null) {
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(imageForSave, null), "png", file);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        FileSaver.saveFile(paneForFirstTask.snapshot(null, null), "png",
+                (int) paneForFirstTask.getWidth(), (int) paneForFirstTask.getHeight());
     }
-
 
 
 }

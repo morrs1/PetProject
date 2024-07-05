@@ -49,6 +49,7 @@ public class ThirdTaskController extends BaseController implements Initializable
     Button exitButton;
     @FXML
     AnchorPane mainPaneThirdTask;
+
     Painter painter = new Painter();
 
     @Override
@@ -63,7 +64,7 @@ public class ThirdTaskController extends BaseController implements Initializable
         if (!Objects.equals(textFieldForWidthOfContour.getText(), "") && !Objects.equals(comboBoxForTypeOfContour.getValue(), null)
                 && thirdTaskToggleButtonsGroup.getSelectedToggle() != null) {
 
-            AbstractShape newShape =  ShapeFactory.create((Shape)
+            AbstractShape newShape = ShapeFactory.create((Shape)
                             (((ToggleButton) thirdTaskToggleButtonsGroup.getSelectedToggle()).getChildrenUnmodifiable().getFirst()),
                     colorPickerForContour.getValue(),
                     colorPikerForFill.getValue(),
@@ -72,7 +73,7 @@ public class ThirdTaskController extends BaseController implements Initializable
 
 
             if (painter.getCurrentShape() != null) {
-                if(painter.getCurrentShape().getRectangle().getStroke() != null){
+                if (painter.getCurrentShape().getRectangle().getStroke() != null) {
                     var previousRectangle = painter.getCurrentShape().getRectangle();
                     Color colorOfRectangle = (Color) previousRectangle.getStroke();
                     previousRectangle.setStroke(new Color(colorOfRectangle.getRed(), colorOfRectangle.getGreen(), colorOfRectangle.getBlue(), 1));
@@ -98,9 +99,11 @@ public class ThirdTaskController extends BaseController implements Initializable
             }
         }
     }
+
     @FXML
-    protected void onSaveButtonClick(){
-        FileSaver.saveFile(paneForThirdTask.snapshot(null,null), "png");
+    protected void onSaveButtonClick() {
+        FileSaver.saveFile(paneForThirdTask.snapshot(null, null), "png",
+                Integer.parseInt(widthForImageToSave.getText()), Integer.parseInt(heightForImageToSave.getText()));
     }
 
     private void onArrowsPressed(KeyEvent keyEvent) {
