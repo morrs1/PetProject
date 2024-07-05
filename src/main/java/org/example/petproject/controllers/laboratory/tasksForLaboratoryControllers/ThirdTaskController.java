@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import org.example.petproject.controllers.BaseController;
+import org.example.petproject.core.classes.FileSaver;
 import org.example.petproject.core.enums.Directions;
 import org.example.petproject.model.secondTask.Painter;
 import org.example.petproject.model.secondTask.ShapeFactory;
@@ -97,6 +98,10 @@ public class ThirdTaskController extends BaseController implements Initializable
             }
         }
     }
+    @FXML
+    protected void onSaveButtonClick(){
+        FileSaver.saveFile(paneForThirdTask.snapshot(null,null), "png");
+    }
 
     private void onArrowsPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
@@ -120,4 +125,5 @@ public class ThirdTaskController extends BaseController implements Initializable
             case PERIOD -> painter.getCurrentShape().changeSize(Directions.RIGHT);
         }
     }
+
 }
