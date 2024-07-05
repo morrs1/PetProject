@@ -1,6 +1,7 @@
 package org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -50,6 +51,10 @@ public class ThirdTaskController extends BaseController implements Initializable
     @FXML
     AnchorPane mainPaneThirdTask;
 
+    Tooltip tooltipForHelp = new Tooltip("Это приложение выполняет функцию графического редактора,\n " +
+            "настройте изображение " +
+            "в правой панели и щелкните лкм по левой панели,\n после добавления на панель фигуры, вы можете изменять " +
+            "ее размеры \n(клавиши \"<\" \">\" \"+\" \"-\" и менять ее расположение на клавиши стрелок ");
     Painter painter = new Painter();
 
     @Override
@@ -104,6 +109,16 @@ public class ThirdTaskController extends BaseController implements Initializable
     protected void onSaveButtonClick() {
         FileSaver.saveFile(paneForThirdTask.snapshot(null, null), "png",
                 Integer.parseInt(widthForImageToSave.getText()), Integer.parseInt(heightForImageToSave.getText()));
+    }
+
+    @FXML
+    protected void onHelpButtonPressed(MouseEvent mouseEvent) {
+        tooltipForHelp.show(buttonForHelp, mouseEvent.getScreenX(), mouseEvent.getScreenY());
+    }
+
+    @FXML
+    protected void onHelpButtonReleased(MouseEvent mouseEvent) {
+        tooltipForHelp.hide();
     }
 
     private void onArrowsPressed(KeyEvent keyEvent) {
