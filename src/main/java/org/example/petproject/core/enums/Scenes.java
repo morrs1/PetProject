@@ -13,6 +13,7 @@ public enum Scenes {
     LABORATORY_WINDOW("laboratoryWindow"),
     FIRST_TASK_WINDOW("firstTaskWindow"),
     SECOND_TASK_WINDOW("secondTaskWindow"),
-    THIRD_TASK_WINDOW("thirdTaskWindow");
+    THIRD_TASK_WINDOW("thirdTaskWindow"),
+    FOURTH_TASK_WINDOW("fourthTaskWindow");
     private final String name;
 }
