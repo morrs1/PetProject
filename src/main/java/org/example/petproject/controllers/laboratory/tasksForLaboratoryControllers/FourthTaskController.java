@@ -1,35 +1,64 @@
 package org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import org.example.petproject.controllers.BaseController;
 
-public class FourthTaskController extends BaseController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class FourthTaskController extends BaseController implements Initializable {
     @FXML
     LineChart<Number, Number> chartForFunctions;
+    @FXML
+    ComboBox<String> comboBoxForFunctions;
+    @FXML
+    VBox vBoxForFunctions;
 
     @FXML
     protected void onShowButtonClick() {
-        chartForFunctions.setLegendVisible(false);
-        XYChart.Series<Number, Number> sinSeries = new XYChart.Series<>();
+//        chartForFunctions.setLegendVisible(false);
+//        XYChart.Series<Number, Number> sinSeries = new XYChart.Series<>();
+//
+//// Заполняем Series данными
+//        for (double x = -0.1 * Math.PI; x <= 0.1 * Math.PI; x += 0.01) {
+//            sinSeries.getData().add(new XYChart.Data<>(x, Math.sin(x)));
+//        }
+//
+//// Добавляем Series в LineChart
+//
+//        chartForFunctions.getData().add(sinSeries);
+//        for (XYChart.Data<Number, Number> data : sinSeries.getData()) {
+//            Node point = data.getNode();
+//            point.setStyle(
+//                    "-fx-background-color: blue;"
+//            );
+//        }
+//        chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: blue;");
+//        XYChart.Series<Number, Number> cosSeries = new XYChart.Series<>();
+//
+//// Заполняем Series данными
+//        for (double x = -1 * Math.PI; x <= 1 * Math.PI; x += 0.1) {
+//            cosSeries.getData().add(new XYChart.Data<>(x, Math.cos(x)));
+//        }
+//
+//// Добавляем Series в LineChart
+//
+//        chartForFunctions.getData().add(cosSeries);
+    }
 
-// Заполняем Series данными
-        for (double x = -0.2 * Math.PI; x <= 0.2 * Math.PI; x += 0.1) {
-            sinSeries.getData().add(new XYChart.Data<>(x, Math.sin(x)));
-        }
-
-// Добавляем Series в LineChart
-
-        chartForFunctions.getData().add(sinSeries);
-        for (XYChart.Data<Number, Number> data : sinSeries.getData()) {
-            Node point = data.getNode();
-            point.setStyle(
-                    "-fx-background-color: blue;"
-            );
-        }
-        chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: blue;");
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        vBoxForFunctions.getChildren().forEach(vBox -> {
+            ObservableList<Node> innerVBoxChildren = ((VBox) vBox).getChildren();
+            comboBoxForFunctions.getItems().add(((Label) innerVBoxChildren.getLast()).getText());
+        });
     }
 }

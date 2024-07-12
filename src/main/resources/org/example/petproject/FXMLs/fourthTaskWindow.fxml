@@ -28,7 +28,7 @@
           <NumberAxis lowerBound="-4.0" side="LEFT" upperBound="4.0" />
         </yAxis>
       </LineChart>
-      <VBox layoutY="74.0" prefHeight="330.0" prefWidth="151.0" style="-fx-spacing: 10px;">
+      <VBox fx:id="vBoxForFunctions" layoutY="74.0" prefHeight="330.0" prefWidth="151.0" style="-fx-spacing: 10px;">
          <children>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="151.0">
                <children>
@@ -62,7 +62,7 @@
             </VBox>
          </children>
       </VBox>
-      <ComboBox layoutX="5.0" layoutY="416.0" prefHeight="26.0" prefWidth="141.0" />
+      <ComboBox fx:id="comboBoxForFunctions" layoutX="5.0" layoutY="416.0" prefHeight="26.0" prefWidth="141.0" />
       <TextField layoutX="225.0" layoutY="416.0" />
       <Label layoutX="170.0" layoutY="420.0" text="Width:">
          <font>
