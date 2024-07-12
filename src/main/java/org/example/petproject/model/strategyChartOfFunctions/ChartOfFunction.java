@@ -1,7 +1,6 @@
 package org.example.petproject.model.strategyChartOfFunctions;
 
-import javafx.scene.Node;
-import javafx.scene.chart.Chart;
+
 import lombok.Getter;
 import lombok.Setter;
 

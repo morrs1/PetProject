@@ -95,36 +95,6 @@ public class FourthTaskController extends BaseController implements Initializabl
         }
     }
 
-//        chartForFunctions.setLegendVisible(false);
-//        XYChart.Series<Number, Number> sinSeries = new XYChart.Series<>();
-//
-//// Заполняем Series данными
-//        for (double x = -0.1 * Math.PI; x <= 0.1 * Math.PI; x += 0.01) {
-//            sinSeries.getData().add(new XYChart.Data<>(x, Math.sin(x)));
-//        }
-//
-//// Добавляем Series в LineChart
-//
-//        chartForFunctions.getData().add(sinSeries);
-//        for (XYChart.Data<Number, Number> data : sinSeries.getData()) {
-//            Node point = data.getNode();
-//            point.setStyle(
-//                    "-fx-background-color: blue;"
-//            );
-//        }
-//
-//        chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: blue;");
-//        XYChart.Series<Number, Number> cosSeries = new XYChart.Series<>();
-//
-//// Заполняем Series данными
-//        for (double x = -1 * Math.PI; x <= 1 * Math.PI; x += 0.1) {
-//            cosSeries.getData().add(new XYChart.Data<>(x, Math.cos(x)));
-//        }
-//
-//// Добавляем Series в LineChart
-//
-//        chartForFunctions.getData().add(cosSeries);
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -172,23 +142,25 @@ public class FourthTaskController extends BaseController implements Initializabl
         if (textFieldFrom.getText().matches("-?\\d+(\\.\\d+)?") && textFieldTo.getText().matches("-?\\d+(\\.\\d+)?")) {
             chartOfFunction.getCurrentFunction().getSeries().getData().clear();
             if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "sin")) {
-                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.01) {
+                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
                     chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.sin(x)));
+
                 }
             }
 
             if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "cos")) {
-                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.01) {
+                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
                     chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.cos(x)));
                 }
             }
 
             if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "exp")) {
-                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.01) {
+                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
                     chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.exp(x)));
                 }
             }
-
+            chartOfFunction.getCurrentFunction().setRangeFrom(textFieldFrom.getText());
+            chartOfFunction.getCurrentFunction().setRangeTo(textFieldTo.getText());
         }
         for (XYChart.Data<Number, Number> data : chartOfFunction.getCurrentFunction().getSeries().getData()) {
             Node point = data.getNode();
