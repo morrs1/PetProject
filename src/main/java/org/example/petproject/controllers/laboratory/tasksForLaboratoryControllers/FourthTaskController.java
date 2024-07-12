@@ -9,6 +9,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.model.strategyChartOfFunctions.ChartOfFunction;
@@ -25,18 +26,29 @@ public class FourthTaskController extends BaseController implements Initializabl
     VBox vBoxForFunctions;
     @FXML
     RadioButton showButton;
+    @FXML
+    TextField textFieldForWidth;
 
     ChartOfFunction chartOfFunction = new ChartOfFunction();
 
     @FXML
     protected void onShowButtonClick() {
         chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series0"));
-        if(!showButton.isSelected()){
+        if (!showButton.isSelected()) {
             chartOfFunction.hideFunction();
-        }else {
+        } else {
             chartOfFunction.showFunction();
         }
+    }
 
+
+    protected void onWidthButtonChangeValue() {
+        textFieldForWidth.textProperty().addListener((observable, oldValue, newValue) -> {
+            chartOfFunction.changeWidthOfFunction(newValue);
+            System.out.println(newValue);
+        });
+
+    }
 //        chartForFunctions.setLegendVisible(false);
 //        XYChart.Series<Number, Number> sinSeries = new XYChart.Series<>();
 //
@@ -66,7 +78,7 @@ public class FourthTaskController extends BaseController implements Initializabl
 //// Добавляем Series в LineChart
 //
 //        chartForFunctions.getData().add(cosSeries);
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,6 +103,7 @@ public class FourthTaskController extends BaseController implements Initializabl
                     "-fx-background-color: transparent;"
             );
         }
-//        chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series0"));
+        onWidthButtonChangeValue();
+        chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series0"));
     }
 }

@@ -63,7 +63,7 @@
          </children>
       </VBox>
       <ComboBox fx:id="comboBoxForFunctions" layoutX="5.0" layoutY="416.0" prefHeight="26.0" prefWidth="141.0" />
-      <TextField layoutX="225.0" layoutY="416.0" />
+      <TextField fx:id="textFieldForWidth" layoutX="225.0" layoutY="416.0" />
       <Label layoutX="170.0" layoutY="420.0" text="Width:">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
