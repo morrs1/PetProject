@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.model.strategyChartOfFunctions.ChartOfFunction;
+import org.example.petproject.model.strategyChartOfFunctions.Function;
 import org.example.petproject.model.strategyChartOfFunctions.FunctionsSetuper;
 
 import java.net.URL;
@@ -33,6 +34,10 @@ public class FourthTaskController extends BaseController implements Initializabl
 
     ChartOfFunction chartOfFunction = new ChartOfFunction();
 
+    Function sinFunction;
+    Function cosFunction;
+    Function expFunction;
+
     @FXML
     protected void onShowButtonClick() {
 
@@ -47,7 +52,6 @@ public class FourthTaskController extends BaseController implements Initializabl
     protected void onWidthButtonChangeValue() {
         textFieldForWidth.textProperty().addListener((observable, oldValue, newValue) -> {
             chartOfFunction.changeWidthOfFunction(newValue);
-            System.out.println(newValue);
         });
 
     }
@@ -56,16 +60,19 @@ public class FourthTaskController extends BaseController implements Initializabl
     protected void handleComboBoxAction(ActionEvent event) {
         switch (comboBoxForFunctions.getSelectionModel().getSelectedItem()) {
             case "y(x)=sin(x)" -> {
-                chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series0"));
-                chartOfFunction.setColorOfFunction("rgb(255, 0, 0)");
+                chartOfFunction.setCurrentFunction(sinFunction);
+                showButton.setSelected(sinFunction.getIsShowed());
+                textFieldForWidth.setText(sinFunction.getWidth());
             }
             case "y(x)=cos(x)" -> {
-                chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series1"));
-                chartOfFunction.setColorOfFunction("rgb(0, 0, 255)");
+                chartOfFunction.setCurrentFunction(cosFunction);
+                showButton.setSelected(cosFunction.getIsShowed());
+                textFieldForWidth.setText(cosFunction.getWidth());
             }
             case "y(x)=exp(x)" -> {
-                chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series2"));
-                chartOfFunction.setColorOfFunction("rgb(0, 255, 0)");
+                chartOfFunction.setCurrentFunction(expFunction);
+                showButton.setSelected(expFunction.getIsShowed());
+                textFieldForWidth.setText(expFunction.getWidth());
             }
         }
     }
@@ -136,7 +143,9 @@ public class FourthTaskController extends BaseController implements Initializabl
         chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series1").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series2").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
+        sinFunction = new Function(chartForFunctions.lookup(".series0"), "rgb(255, 0, 0)", false, sinSeries, "2");
+        cosFunction = new Function(chartForFunctions.lookup(".series1"), "rgb(0, 0, 255)", false, cosSeries, "2");
+        expFunction = new Function(chartForFunctions.lookup(".series2"), "rgb(0, 255, 0)", false, expSeries, "2");
         onWidthButtonChangeValue();
-        chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series0"));
     }
 }
