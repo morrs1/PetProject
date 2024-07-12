@@ -8,22 +8,23 @@ import lombok.Setter;
 @Setter
 public class ChartOfFunction {
     private Node currentFunction;
+    private String colorOfFunction;
 
     public void showFunction() {
         if (currentFunction != null) {
-            currentFunction.setStyle("");
+            currentFunction.setStyle(currentFunction.getStyle() + "-fx-stroke: " + colorOfFunction + ";");
         }
     }
 
     public void hideFunction() {
         if (currentFunction != null) {
-            currentFunction.setStyle("-fx-stroke: transparent;");
+            currentFunction.setStyle(currentFunction.getStyle() +"-fx-stroke: transparent;");
         }
     }
 
     public void changeWidthOfFunction(String width){
         if (currentFunction != null && !width.isEmpty()) {
-            currentFunction.setStyle("-fx-stroke-width: " + width + ";");
+            currentFunction.setStyle(currentFunction.getStyle() + "-fx-stroke-width: " + width + ";");
         }
     }
 

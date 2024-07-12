@@ -43,7 +43,7 @@
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="151.0">
                <children>
                   <Circle fill="#1f49ff" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <Label text="y(x)=cos(x)-2sin(x)">
+                  <Label text="y(x)=cos(x)">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -53,7 +53,7 @@
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0">
                <children>
                   <Circle fill="#1cb716" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <Label text="y(x)=sin(x*x)">
+                  <Label text="y(x)=exp(x)">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -62,7 +62,7 @@
             </VBox>
          </children>
       </VBox>
-      <ComboBox fx:id="comboBoxForFunctions" layoutX="5.0" layoutY="416.0" prefHeight="26.0" prefWidth="141.0" />
+      <ComboBox fx:id="comboBoxForFunctions" layoutX="5.0" layoutY="416.0" onAction="#handleComboBoxAction" prefHeight="26.0" prefWidth="141.0" />
       <TextField fx:id="textFieldForWidth" layoutX="225.0" layoutY="416.0" />
       <Label layoutX="170.0" layoutY="420.0" text="Width:">
          <font>
