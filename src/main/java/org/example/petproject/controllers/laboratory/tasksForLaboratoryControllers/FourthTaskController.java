@@ -8,8 +8,10 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
 import org.example.petproject.controllers.BaseController;
+import org.example.petproject.model.strategyChartOfFunctions.ChartOfFunction;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,9 +23,20 @@ public class FourthTaskController extends BaseController implements Initializabl
     ComboBox<String> comboBoxForFunctions;
     @FXML
     VBox vBoxForFunctions;
+    @FXML
+    RadioButton showButton;
+
+    ChartOfFunction chartOfFunction = new ChartOfFunction();
 
     @FXML
     protected void onShowButtonClick() {
+        chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series0"));
+        if(!showButton.isSelected()){
+            chartOfFunction.hideFunction();
+        }else {
+            chartOfFunction.showFunction();
+        }
+
 //        chartForFunctions.setLegendVisible(false);
 //        XYChart.Series<Number, Number> sinSeries = new XYChart.Series<>();
 //
@@ -41,6 +54,7 @@ public class FourthTaskController extends BaseController implements Initializabl
 //                    "-fx-background-color: blue;"
 //            );
 //        }
+//
 //        chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: blue;");
 //        XYChart.Series<Number, Number> cosSeries = new XYChart.Series<>();
 //
@@ -60,5 +74,23 @@ public class FourthTaskController extends BaseController implements Initializabl
             ObservableList<Node> innerVBoxChildren = ((VBox) vBox).getChildren();
             comboBoxForFunctions.getItems().add(((Label) innerVBoxChildren.getLast()).getText());
         });
+        chartForFunctions.setLegendVisible(false);
+        XYChart.Series<Number, Number> sinSeries = new XYChart.Series<>();
+
+// Заполняем Series данными
+        for (double x = -10 * Math.PI; x <= 10 * Math.PI; x += 0.5) {
+            sinSeries.getData().add(new XYChart.Data<>(x, Math.sin(x)));
+        }
+
+// Добавляем Series в LineChart
+
+        chartForFunctions.getData().add(sinSeries);
+        for (XYChart.Data<Number, Number> data : sinSeries.getData()) {
+            Node point = data.getNode();
+            point.setStyle(
+                    "-fx-background-color: transparent;"
+            );
+        }
+//        chartOfFunction.setCurrentFunction(chartForFunctions.lookup(".series0"));
     }
 }
