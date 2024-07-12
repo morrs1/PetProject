@@ -15,4 +15,7 @@ public class Function {
     private Boolean isShowed;
     private XYChart.Series<Number, Number> series;
     private String width;
+    private String Name;
+    private String rangeFrom;
+    private String rangeTo;
 }

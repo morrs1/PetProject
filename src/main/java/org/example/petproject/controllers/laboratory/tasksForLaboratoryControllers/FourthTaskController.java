@@ -18,6 +18,7 @@ import org.example.petproject.model.strategyChartOfFunctions.Function;
 import org.example.petproject.model.strategyChartOfFunctions.FunctionsSetuper;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class FourthTaskController extends BaseController implements Initializable {
@@ -31,6 +32,10 @@ public class FourthTaskController extends BaseController implements Initializabl
     RadioButton showButton;
     @FXML
     TextField textFieldForWidth;
+    @FXML
+    TextField textFieldFrom;
+    @FXML
+    TextField textFieldTo;
 
     ChartOfFunction chartOfFunction = new ChartOfFunction();
 
@@ -46,6 +51,7 @@ public class FourthTaskController extends BaseController implements Initializabl
         } else {
             chartOfFunction.showFunction();
         }
+
     }
 
 
@@ -56,6 +62,12 @@ public class FourthTaskController extends BaseController implements Initializabl
 
     }
 
+    protected void onRangeFieldsChangeValue() {
+        textFieldFrom.textProperty().addListener((observable, oldValue, newValue) -> updateSinFunction());
+        textFieldTo.textProperty().addListener((observable, oldValue, newValue) -> updateSinFunction());
+    }
+
+
     @FXML
     protected void handleComboBoxAction(ActionEvent event) {
         switch (comboBoxForFunctions.getSelectionModel().getSelectedItem()) {
@@ -63,16 +75,22 @@ public class FourthTaskController extends BaseController implements Initializabl
                 chartOfFunction.setCurrentFunction(sinFunction);
                 showButton.setSelected(sinFunction.getIsShowed());
                 textFieldForWidth.setText(sinFunction.getWidth());
+                textFieldFrom.setText(sinFunction.getRangeFrom());
+                textFieldTo.setText(sinFunction.getRangeTo());
             }
             case "y(x)=cos(x)" -> {
                 chartOfFunction.setCurrentFunction(cosFunction);
                 showButton.setSelected(cosFunction.getIsShowed());
                 textFieldForWidth.setText(cosFunction.getWidth());
+                textFieldFrom.setText(cosFunction.getRangeFrom());
+                textFieldTo.setText(cosFunction.getRangeTo());
             }
             case "y(x)=exp(x)" -> {
                 chartOfFunction.setCurrentFunction(expFunction);
                 showButton.setSelected(expFunction.getIsShowed());
                 textFieldForWidth.setText(expFunction.getWidth());
+                textFieldFrom.setText(expFunction.getRangeFrom());
+                textFieldTo.setText(expFunction.getRangeTo());
             }
         }
     }
@@ -143,9 +161,38 @@ public class FourthTaskController extends BaseController implements Initializabl
         chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series1").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series2").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
-        sinFunction = new Function(chartForFunctions.lookup(".series0"), "rgb(255, 0, 0)", false, sinSeries, "2");
-        cosFunction = new Function(chartForFunctions.lookup(".series1"), "rgb(0, 0, 255)", false, cosSeries, "2");
-        expFunction = new Function(chartForFunctions.lookup(".series2"), "rgb(0, 255, 0)", false, expSeries, "2");
+        sinFunction = new Function(chartForFunctions.lookup(".series0"), "rgb(255, 0, 0)", false, sinSeries, "2", "sin", "-3", "3");
+        cosFunction = new Function(chartForFunctions.lookup(".series1"), "rgb(0, 0, 255)", false, cosSeries, "2", "cos", "-3", "3");
+        expFunction = new Function(chartForFunctions.lookup(".series2"), "rgb(0, 255, 0)", false, expSeries, "2", "exp", "-3", "3");
         onWidthButtonChangeValue();
+        onRangeFieldsChangeValue();
+    }
+
+    private void updateSinFunction() {
+        if (textFieldFrom.getText().matches("-?\\d+(\\.\\d+)?") && textFieldTo.getText().matches("-?\\d+(\\.\\d+)?")) {
+            chartOfFunction.getCurrentFunction().getSeries().getData().clear();
+            if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "sin")) {
+                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.01) {
+                    chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.sin(x)));
+                }
+            }
+
+            if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "cos")) {
+                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.01) {
+                    chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.cos(x)));
+                }
+            }
+
+            if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "exp")) {
+                for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.01) {
+                    chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.exp(x)));
+                }
+            }
+
+        }
+        for (XYChart.Data<Number, Number> data : chartOfFunction.getCurrentFunction().getSeries().getData()) {
+            Node point = data.getNode();
+            point.setStyle("-fx-background-color: transparent;");
+        }
     }
 }

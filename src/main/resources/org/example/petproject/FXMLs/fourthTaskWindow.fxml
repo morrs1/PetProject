@@ -84,7 +84,7 @@
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="481.0" layoutY="396.0" prefHeight="26.0" prefWidth="60.0" />
-      <TextField layoutX="481.0" layoutY="435.0" prefHeight="26.0" prefWidth="60.0" />
+      <TextField fx:id="textFieldFrom" layoutX="481.0" layoutY="396.0" prefHeight="26.0" prefWidth="60.0" />
+      <TextField fx:id="textFieldTo" layoutX="481.0" layoutY="435.0" prefHeight="26.0" prefWidth="60.0" />
    </children>
 </AnchorPane>
