@@ -42,6 +42,7 @@ public class FourthTaskController extends BaseController implements Initializabl
     Function sinFunction;
     Function cosFunction;
     Function expFunction;
+    Boolean isUserUpdate = true;
 
     @FXML
     protected void onShowButtonClick() {
@@ -63,8 +64,16 @@ public class FourthTaskController extends BaseController implements Initializabl
     }
 
     protected void onRangeFieldsChangeValue() {
-        textFieldFrom.textProperty().addListener((observable, oldValue, newValue) -> updateSinFunction());
-        textFieldTo.textProperty().addListener((observable, oldValue, newValue) -> updateSinFunction());
+        textFieldFrom.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (isUserUpdate) {
+                updateSinFunction();
+            }
+        });
+        textFieldTo.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (isUserUpdate) {
+                updateSinFunction();
+            }
+        });
     }
 
 
@@ -123,9 +132,13 @@ public class FourthTaskController extends BaseController implements Initializabl
     }
 
     private void updateSinFunction() {
-        if (textFieldFrom.getText().matches("-?\\d+(\\.\\d+)?") && textFieldTo.getText().matches("-?\\d+(\\.\\d+)?")) {
+
+        if (textFieldFrom.getText().matches("-?\\d+(\\.\\d+)?") && textFieldTo.getText().matches("-?\\d+(\\.\\d+)?")
+                && Double.parseDouble(textFieldFrom.getText()) < Double.parseDouble(textFieldTo.getText())) {
+
             chartOfFunction.getCurrentFunction().getSeries().getData().clear();
             if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "sin")) {
+                System.out.println("ff");
                 for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
                     chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.sin(x)));
 
@@ -133,18 +146,24 @@ public class FourthTaskController extends BaseController implements Initializabl
             }
 
             if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "cos")) {
+                System.out.println("dd");
                 for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
                     chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.cos(x)));
+
                 }
             }
 
             if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "exp")) {
+                System.out.println("aa");
                 for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
                     chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.exp(x)));
                 }
             }
             chartOfFunction.getCurrentFunction().setRangeFrom(textFieldFrom.getText());
             chartOfFunction.getCurrentFunction().setRangeTo(textFieldTo.getText());
+            System.out.println("sin " + sinFunction.getRangeFrom() + " " + sinFunction.getRangeTo());
+            System.out.println("cos " + cosFunction.getRangeFrom() + " " + cosFunction.getRangeTo());
+            System.out.println("exp " + expFunction.getRangeFrom() + " " + expFunction.getRangeTo());
         }
         for (XYChart.Data<Number, Number> data : chartOfFunction.getCurrentFunction().getSeries().getData()) {
             Node point = data.getNode();
@@ -156,7 +175,10 @@ public class FourthTaskController extends BaseController implements Initializabl
         chartOfFunction.setCurrentFunction(function);
         showButton.setSelected(function.getIsShowed());
         textFieldForWidth.setText(function.getWidth());
+        isUserUpdate = false;
         textFieldFrom.setText(function.getRangeFrom());
         textFieldTo.setText(function.getRangeTo());
+        isUserUpdate = true;
     }
+
 }
