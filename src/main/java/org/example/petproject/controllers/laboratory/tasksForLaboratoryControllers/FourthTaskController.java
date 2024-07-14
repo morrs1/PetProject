@@ -69,29 +69,13 @@ public class FourthTaskController extends BaseController implements Initializabl
 
 
     @FXML
-    protected void handleComboBoxAction(ActionEvent event) {
+    protected void handleComboBoxAction() {
         switch (comboBoxForFunctions.getSelectionModel().getSelectedItem()) {
-            case "y(x)=sin(x)" -> {
-                chartOfFunction.setCurrentFunction(sinFunction);
-                showButton.setSelected(sinFunction.getIsShowed());
-                textFieldForWidth.setText(sinFunction.getWidth());
-                textFieldFrom.setText(sinFunction.getRangeFrom());
-                textFieldTo.setText(sinFunction.getRangeTo());
-            }
-            case "y(x)=cos(x)" -> {
-                chartOfFunction.setCurrentFunction(cosFunction);
-                showButton.setSelected(cosFunction.getIsShowed());
-                textFieldForWidth.setText(cosFunction.getWidth());
-                textFieldFrom.setText(cosFunction.getRangeFrom());
-                textFieldTo.setText(cosFunction.getRangeTo());
-            }
-            case "y(x)=exp(x)" -> {
-                chartOfFunction.setCurrentFunction(expFunction);
-                showButton.setSelected(expFunction.getIsShowed());
-                textFieldForWidth.setText(expFunction.getWidth());
-                textFieldFrom.setText(expFunction.getRangeFrom());
-                textFieldTo.setText(expFunction.getRangeTo());
-            }
+            case "y(x)=sin(x)" -> setupUIWhenSwitchFunction(sinFunction);
+
+            case "y(x)=cos(x)" -> setupUIWhenSwitchFunction(cosFunction);
+
+            case "y(x)=exp(x)" -> setupUIWhenSwitchFunction(expFunction);
         }
     }
 
@@ -166,5 +150,13 @@ public class FourthTaskController extends BaseController implements Initializabl
             Node point = data.getNode();
             point.setStyle("-fx-background-color: transparent;");
         }
+    }
+
+    private void setupUIWhenSwitchFunction(Function function) {
+        chartOfFunction.setCurrentFunction(function);
+        showButton.setSelected(function.getIsShowed());
+        textFieldForWidth.setText(function.getWidth());
+        textFieldFrom.setText(function.getRangeFrom());
+        textFieldTo.setText(function.getRangeTo());
     }
 }
