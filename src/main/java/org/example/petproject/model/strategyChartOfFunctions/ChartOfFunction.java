@@ -7,26 +7,26 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ChartOfFunction {
-   private Function currentFunction;
+   private MyFunction currentMyFunction;
 
     public void showFunction() {
-        if (currentFunction != null) {
-            currentFunction.getFunction().setStyle(currentFunction.getFunction().getStyle() + "-fx-stroke: " + currentFunction.getColorOfFunction() + ";");
-            currentFunction.setIsShowed(true);
+        if (currentMyFunction != null) {
+            currentMyFunction.getFunction().setStyle(currentMyFunction.getFunction().getStyle() + "-fx-stroke: " + currentMyFunction.getColorOfFunction() + ";");
+            currentMyFunction.setIsShowed(true);
         }
     }
 
     public void hideFunction() {
-        if (currentFunction != null) {
-            currentFunction.getFunction().setStyle(currentFunction.getFunction().getStyle() +"-fx-stroke: transparent;");
-            currentFunction.setIsShowed(false);
+        if (currentMyFunction != null) {
+            currentMyFunction.getFunction().setStyle(currentMyFunction.getFunction().getStyle() +"-fx-stroke: transparent;");
+            currentMyFunction.setIsShowed(false);
         }
     }
 
     public void changeWidthOfFunction(String width){
-        if (currentFunction != null && !width.isEmpty()) {
-            currentFunction.getFunction().setStyle(currentFunction.getFunction().getStyle() + "-fx-stroke-width: " + width + ";");
-            currentFunction.setWidth(width);
+        if (currentMyFunction != null && !width.isEmpty()) {
+            currentMyFunction.getFunction().setStyle(currentMyFunction.getFunction().getStyle() + "-fx-stroke-width: " + width + ";");
+            currentMyFunction.setWidth(width);
         }
     }
 

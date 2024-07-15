@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.model.strategyChartOfFunctions.ChartOfFunction;
-import org.example.petproject.model.strategyChartOfFunctions.Function;
+import org.example.petproject.model.strategyChartOfFunctions.MyFunction;
 import org.example.petproject.model.strategyChartOfFunctions.FunctionsSetuper;
 
 import java.net.URL;
@@ -38,26 +38,23 @@ public class FourthTaskController extends BaseController implements Initializabl
 
     ChartOfFunction chartOfFunction = new ChartOfFunction();
 
-    Function sinFunction;
-    Function cosFunction;
-    Function expFunction;
+    MyFunction sinMyFunction;
+    MyFunction cosMyFunction;
+    MyFunction expMyFunction;
     Boolean isUserUpdate = true;
 
     @FXML
     protected void onShowButtonClick() {
-
         if (!showButton.isSelected()) {
             chartOfFunction.hideFunction();
         } else {
             chartOfFunction.showFunction();
         }
-
     }
 
 
     protected void onWidthButtonChangeValue() {
         textFieldForWidth.textProperty().addListener((observable, oldValue, newValue) -> chartOfFunction.changeWidthOfFunction(newValue));
-
     }
 
     protected void onRangeFieldsChangeValue() {
@@ -77,11 +74,11 @@ public class FourthTaskController extends BaseController implements Initializabl
     @FXML
     protected void handleComboBoxAction() {
         switch (comboBoxForFunctions.getSelectionModel().getSelectedItem()) {
-            case "y(x)=sin(x)" -> setupUIWhenSwitchFunction(sinFunction);
+            case "y(x)=sin(x)" -> setupUIWhenSwitchFunction(sinMyFunction);
 
-            case "y(x)=cos(x)" -> setupUIWhenSwitchFunction(cosFunction);
+            case "y(x)=cos(x)" -> setupUIWhenSwitchFunction(cosMyFunction);
 
-            case "y(x)=exp(x)" -> setupUIWhenSwitchFunction(expFunction);
+            case "y(x)=exp(x)" -> setupUIWhenSwitchFunction(expMyFunction);
         }
     }
 
@@ -106,9 +103,9 @@ public class FourthTaskController extends BaseController implements Initializabl
         chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series1").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series2").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
-        sinFunction = new Function(chartForFunctions.lookup(".series0"), "rgb(255, 0, 0)", false, sinSeries, "2", "sin", "-3", "3");
-        cosFunction = new Function(chartForFunctions.lookup(".series1"), "rgb(0, 0, 255)", false, cosSeries, "2", "cos", "-3", "3");
-        expFunction = new Function(chartForFunctions.lookup(".series2"), "rgb(0, 255, 0)", false, expSeries, "2", "exp", "-3", "3");
+        sinMyFunction = new MyFunction(chartForFunctions.lookup(".series0"), "rgb(255, 0, 0)", false, sinSeries, "2", "sin", "-3", "3");
+        cosMyFunction = new MyFunction(chartForFunctions.lookup(".series1"), "rgb(0, 0, 255)", false, cosSeries, "2", "cos", "-3", "3");
+        expMyFunction = new MyFunction(chartForFunctions.lookup(".series2"), "rgb(0, 255, 0)", false, expSeries, "2", "exp", "-3", "3");
         onWidthButtonChangeValue();
         onRangeFieldsChangeValue();
     }
@@ -118,52 +115,46 @@ public class FourthTaskController extends BaseController implements Initializabl
         if (textFieldFrom.getText().matches("-?\\d+(\\.\\d+)?") && textFieldTo.getText().matches("-?\\d+(\\.\\d+)?")
                 && Double.parseDouble(textFieldFrom.getText()) < Double.parseDouble(textFieldTo.getText())) {
 
-            chartOfFunction.getCurrentFunction().getSeries().getData().clear();
-            if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "sin")) {
-                System.out.println("ff");
+            chartOfFunction.getCurrentMyFunction().getSeries().getData().clear();
+            if (Objects.equals(chartOfFunction.getCurrentMyFunction().getName(), "sin")) {
                 for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
-                    chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.sin(x)));
+                    chartOfFunction.getCurrentMyFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.sin(x)));
 
                 }
             }
 
-            if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "cos")) {
-                System.out.println("dd");
+            if (Objects.equals(chartOfFunction.getCurrentMyFunction().getName(), "cos")) {
                 for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
-                    chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.cos(x)));
+                    chartOfFunction.getCurrentMyFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.cos(x)));
 
                 }
             }
 
-            if (Objects.equals(chartOfFunction.getCurrentFunction().getName(), "exp")) {
-                System.out.println("aa");
+            if (Objects.equals(chartOfFunction.getCurrentMyFunction().getName(), "exp")) {
                 for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
-                    chartOfFunction.getCurrentFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.exp(x)));
+                    chartOfFunction.getCurrentMyFunction().getSeries().getData().add(new XYChart.Data<>(x, Math.exp(x)));
                 }
             }
-            chartOfFunction.getCurrentFunction().setRangeFrom(textFieldFrom.getText());
-            chartOfFunction.getCurrentFunction().setRangeTo(textFieldTo.getText());
-            System.out.println("sin " + sinFunction.getRangeFrom() + " " + sinFunction.getRangeTo());
-            System.out.println("cos " + cosFunction.getRangeFrom() + " " + cosFunction.getRangeTo());
-            System.out.println("exp " + expFunction.getRangeFrom() + " " + expFunction.getRangeTo());
+            chartOfFunction.getCurrentMyFunction().setRangeFrom(textFieldFrom.getText());
+            chartOfFunction.getCurrentMyFunction().setRangeTo(textFieldTo.getText());
         }
-        for (XYChart.Data<Number, Number> data : chartOfFunction.getCurrentFunction().getSeries().getData()) {
+        for (XYChart.Data<Number, Number> data : chartOfFunction.getCurrentMyFunction().getSeries().getData()) {
             Node point = data.getNode();
             point.setStyle("-fx-background-color: transparent;");
         }
     }
 
-    private void setupUIWhenSwitchFunction(Function function) {
-        chartOfFunction.setCurrentFunction(function);
-        showButton.setSelected(function.getIsShowed());
-        textFieldForWidth.setText(function.getWidth());
+    private void setupUIWhenSwitchFunction(MyFunction myFunction) {
+        chartOfFunction.setCurrentMyFunction(myFunction);
+        showButton.setSelected(myFunction.getIsShowed());
+        textFieldForWidth.setText(myFunction.getWidth());
         isUserUpdate = false;
-        textFieldFrom.setText(function.getRangeFrom());
-        textFieldTo.setText(function.getRangeTo());
+        textFieldFrom.setText(myFunction.getRangeFrom());
+        textFieldTo.setText(myFunction.getRangeTo());
         isUserUpdate = true;
     }
 
-    private void makePointsTransparent(XYChart.Series<Number, Number> series){
+    private void makePointsTransparent(XYChart.Series<Number, Number> series) {
         for (XYChart.Data<Number, Number> data : series.getData()) {
             Node point = data.getNode();
             point.setStyle(

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Function {
+public class MyFunction {
     private Node Function;
     private String colorOfFunction;
     private Boolean isShowed;
