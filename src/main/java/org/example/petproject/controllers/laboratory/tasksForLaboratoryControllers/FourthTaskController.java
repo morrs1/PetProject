@@ -1,7 +1,6 @@
 package org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -57,9 +56,7 @@ public class FourthTaskController extends BaseController implements Initializabl
 
 
     protected void onWidthButtonChangeValue() {
-        textFieldForWidth.textProperty().addListener((observable, oldValue, newValue) -> {
-            chartOfFunction.changeWidthOfFunction(newValue);
-        });
+        textFieldForWidth.textProperty().addListener((observable, oldValue, newValue) -> chartOfFunction.changeWidthOfFunction(newValue));
 
     }
 
@@ -103,24 +100,9 @@ public class FourthTaskController extends BaseController implements Initializabl
         chartForFunctions.getData().add(sinSeries);
         chartForFunctions.getData().add(cosSeries);
         chartForFunctions.getData().add(expSeries);
-        for (XYChart.Data<Number, Number> data : sinSeries.getData()) {
-            Node point = data.getNode();
-            point.setStyle(
-                    "-fx-background-color: transparent;"
-            );
-        }
-        for (XYChart.Data<Number, Number> data : cosSeries.getData()) {
-            Node point = data.getNode();
-            point.setStyle(
-                    "-fx-background-color: transparent;"
-            );
-        }
-        for (XYChart.Data<Number, Number> data : expSeries.getData()) {
-            Node point = data.getNode();
-            point.setStyle(
-                    "-fx-background-color: transparent;"
-            );
-        }
+        makePointsTransparent(sinSeries);
+        makePointsTransparent(cosSeries);
+        makePointsTransparent(expSeries);
         chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series1").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
         chartForFunctions.lookup(".series2").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
@@ -179,6 +161,15 @@ public class FourthTaskController extends BaseController implements Initializabl
         textFieldFrom.setText(function.getRangeFrom());
         textFieldTo.setText(function.getRangeTo());
         isUserUpdate = true;
+    }
+
+    private void makePointsTransparent(XYChart.Series<Number, Number> series){
+        for (XYChart.Data<Number, Number> data : series.getData()) {
+            Node point = data.getNode();
+            point.setStyle(
+                    "-fx-background-color: transparent;"
+            );
+        }
     }
 
 }
