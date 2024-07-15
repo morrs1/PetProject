@@ -110,18 +110,9 @@ public class FourthTaskController extends BaseController implements Initializabl
     }
 
     private void updateFunction() {
-
         if (textFieldFrom.getText().matches("-?\\d+(\\.\\d+)?") && textFieldTo.getText().matches("-?\\d+(\\.\\d+)?")
                 && Double.parseDouble(textFieldFrom.getText()) < Double.parseDouble(textFieldTo.getText())) {
-
-            chartOfFunction.getCurrentMyFunction().getSeries().getData().clear();
-            String nameOfFunction = chartOfFunction.getCurrentMyFunction().getName();
-            for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
-                chartOfFunction.getCurrentMyFunction().getSeries().getData().add(new XYChart.Data<>(x, ChartOfFunction.functions.get(nameOfFunction).apply(x)));
-            }
-
-            chartOfFunction.getCurrentMyFunction().setRangeFrom(textFieldFrom.getText());
-            chartOfFunction.getCurrentMyFunction().setRangeTo(textFieldTo.getText());
+            chartOfFunction.changeRangeOfFunction(textFieldFrom, textFieldTo);
         }
         makePointsTransparent(chartOfFunction.getCurrentMyFunction().getSeries());
     }
