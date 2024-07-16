@@ -58,13 +58,8 @@ public class FourthTaskController extends BaseController implements Initializabl
         textFieldForWidth.textProperty().addListener((observable, oldValue, newValue) -> chartOfFunction.changeWidthOfFunction(newValue));
     }
 
-    protected void onRangeFieldsChangeValue() {
-        textFieldFrom.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (isUserUpdate) {
-                updateFunction();
-            }
-        });
-        textFieldTo.textProperty().addListener((observable, oldValue, newValue) -> {
+    protected void onRangeFieldsChangeValue(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (isUserUpdate) {
                 updateFunction();
             }
@@ -109,7 +104,8 @@ public class FourthTaskController extends BaseController implements Initializabl
         expMyFunction = new MyFunction(chartForFunctions.lookup(".series2"), "rgb(0, 255, 0)", false, expSeries, "2", "exp", "-3", "3");
 
         onWidthButtonChangeValue();
-        onRangeFieldsChangeValue();
+        onRangeFieldsChangeValue(textFieldFrom);
+        onRangeFieldsChangeValue(textFieldTo);
     }
 
     private void updateFunction() {
