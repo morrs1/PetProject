@@ -18,6 +18,8 @@ import org.example.petproject.model.strategyChartOfFunctions.FunctionsSetuper;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class FourthTaskController extends BaseController implements Initializable {
     @FXML
@@ -99,12 +101,13 @@ public class FourthTaskController extends BaseController implements Initializabl
         makePointsTransparent(sinSeries);
         makePointsTransparent(cosSeries);
         makePointsTransparent(expSeries);
-        chartForFunctions.lookup(".series0").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
-        chartForFunctions.lookup(".series1").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
-        chartForFunctions.lookup(".series2").setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;");
+
+        IntStream.range(0,3).forEach(x-> chartForFunctions.lookup(".series"+x).setStyle("-fx-stroke-width: 2px;" + "-fx-stroke: transparent;"));
+
         sinMyFunction = new MyFunction(chartForFunctions.lookup(".series0"), "rgb(255, 0, 0)", false, sinSeries, "2", "sin", "-3", "3");
         cosMyFunction = new MyFunction(chartForFunctions.lookup(".series1"), "rgb(0, 0, 255)", false, cosSeries, "2", "cos", "-3", "3");
         expMyFunction = new MyFunction(chartForFunctions.lookup(".series2"), "rgb(0, 255, 0)", false, expSeries, "2", "exp", "-3", "3");
+
         onWidthButtonChangeValue();
         onRangeFieldsChangeValue();
     }

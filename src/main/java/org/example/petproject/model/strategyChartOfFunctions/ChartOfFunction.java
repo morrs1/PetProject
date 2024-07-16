@@ -45,7 +45,7 @@ public class ChartOfFunction {
         getCurrentMyFunction().getSeries().getData().clear();
         String nameOfFunction = getCurrentMyFunction().getName();
         for (double x = Double.parseDouble(textFieldFrom.getText()); x <= Double.parseDouble(textFieldTo.getText()); x += 0.05) {
-            getCurrentMyFunction().getSeries().getData().add(new XYChart.Data<>(x, ChartOfFunction.functions.get(nameOfFunction).apply(x)));
+            getCurrentMyFunction().getSeries().getData().add(new XYChart.Data<>(x, functions.get(nameOfFunction).apply(x)));
         }
 
         getCurrentMyFunction().setRangeFrom(textFieldFrom.getText());
