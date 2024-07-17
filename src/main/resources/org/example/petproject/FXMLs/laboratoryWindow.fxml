@@ -31,7 +31,7 @@
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
@@ -47,15 +47,15 @@
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" prefHeight="70.0" prefWidth="120.0" stylesheets="@../CSSs/TaskOfLaboratoryButton.css" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="72.0" />
                      </font></Button>
