@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers.FifthTaskController">
@@ -13,12 +14,16 @@
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/backButton.css" />
          </children>
       </AnchorPane>
-      <TableView fx:id="table" editable="true" layoutX="50.0" layoutY="79.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" tableMenuButtonVisible="true">
+      <TableView fx:id="table" editable="true" layoutX="50.0" layoutY="79.0" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" tableMenuButtonVisible="true">
         <columns>
           <TableColumn fx:id="languageColumn" maxWidth="150.0" prefWidth="150.0" text="Язык" />
           <TableColumn fx:id="authorColumn" prefWidth="150.0" text="Автор" />
             <TableColumn fx:id="yearColumn" prefWidth="150.0" text="Год" />
         </columns>
       </TableView>
+      <TextField fx:id="textFieldForLanguage" layoutX="50.0" layoutY="427.0" promptText="Язык" />
+      <TextField fx:id="textFieldForAuthor" layoutX="231.0" layoutY="427.0" promptText="Автор" />
+      <TextField fx:id="textFieldForYear" layoutX="412.0" layoutY="427.0" promptText="Год" />
+      <Button layoutX="611.0" layoutY="427.0" mnemonicParsing="false" onAction="#onAddButtonClick" text="Add" />
    </children>
 </AnchorPane>

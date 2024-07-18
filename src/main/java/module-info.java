@@ -5,6 +5,7 @@ module org.example.petproject {
     requires com.fasterxml.jackson.databind;
     requires java.desktop;
     requires javafx.swing;
+    requires java.rmi;
 
     opens org.example.petproject to javafx.fxml;
     exports org.example.petproject;
