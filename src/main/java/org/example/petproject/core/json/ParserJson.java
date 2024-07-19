@@ -9,7 +9,7 @@ import java.io.IOException;
  * Класс для парсинга JSON файла со сценами
  */
 public class ParserJson {
-    public static <T> T parseScenesJson(String pathToJson, Class<T> clazz) {
+    public static <T> T parseJson(String pathToJson, Class<T> clazz) {
         ObjectMapper objectMapper = new ObjectMapper();
         File json = new File(pathToJson);
         T jsonObject;

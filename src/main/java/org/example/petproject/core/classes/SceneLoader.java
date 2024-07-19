@@ -24,7 +24,7 @@ public class SceneLoader {
     public static SceneLoader getInstance() {
         if (instance == null) {
             instance = new SceneLoader();
-            ScenesJson scenesJson = ParserJson.parseScenesJson("src/main/resources/org/example/petproject/JSONs/Scenes.json", ScenesJson.class);
+            ScenesJson scenesJson = ParserJson.parseJson("src/main/resources/org/example/petproject/JSONs/Scenes.json", ScenesJson.class);
             instance.scenes = new HashMap<>();
             scenesJson.pathToScenes().forEach((key, value) -> {
                 try {
