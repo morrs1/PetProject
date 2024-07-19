@@ -8,9 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.example.petproject.controllers.BaseController;
+import org.example.petproject.core.json.ParserJson;
+import org.example.petproject.core.json.RowsForTableJson;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class FifthTaskController extends BaseController implements Initializable {
@@ -39,13 +42,12 @@ public class FifthTaskController extends BaseController implements Initializable
 
         table.setEditable(true);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
-        table.getItems().add(new LanguageInfo("C", "Денис Ритчи", "1972"));
-        table.getItems().add(new LanguageInfo("C++", "Бьерн Страуструп", "1983"));
-        table.getItems().add(new LanguageInfo("Python", "Гвидо ван Россум", "1991"));
-        table.getItems().add(new LanguageInfo("Java", "Джеймс Гослинг", "1995"));
-        table.getItems().add(new LanguageInfo("JavaScript", "Брендон Айк", "1995"));
-        table.getItems().add(new LanguageInfo("C#", "Андрес Хейлсберг", "2001"));
-        table.getItems().add(new LanguageInfo("Scala", "Мартин Одерски", "2003"));
+
+        ArrayList<ArrayList<String>> rowsForTable = ParserJson.parseJson(
+                "src/main/resources/org/example/petproject/JSONs/RowsOfTable.json",
+                RowsForTableJson.class
+        ).rows();
+        rowsForTable.forEach(row -> table.getItems().add(new LanguageInfo(row.getFirst(), row.get(1), row.get(2))));
     }
 
     @FXML
