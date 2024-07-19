@@ -5,17 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import org.example.petproject.controllers.BaseController;
-import javafx.embed.swing.SwingFXUtils;
-import org.example.petproject.controllers.SceneController;
 import org.example.petproject.core.classes.FileSaver;
 
-import javax.imageio.ImageIO;
-import java.io.*;
 
 
 public class FirstTaskController extends BaseController {
