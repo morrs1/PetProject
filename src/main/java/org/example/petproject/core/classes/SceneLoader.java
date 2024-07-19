@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import lombok.Getter;
 import org.example.petproject.Main;
-import org.example.petproject.core.json.ParserScenesJson;
+import org.example.petproject.core.json.ParserJson;
 import org.example.petproject.core.json.ScenesJson;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class SceneLoader {
     public static SceneLoader getInstance() {
         if (instance == null) {
             instance = new SceneLoader();
-            ScenesJson scenesJson = ParserScenesJson.parseScenesJson("src/main/resources/org/example/petproject/JSONs/Scenes.json", ScenesJson.class);
+            ScenesJson scenesJson = ParserJson.parseScenesJson("src/main/resources/org/example/petproject/JSONs/Scenes.json", ScenesJson.class);
             instance.scenes = new HashMap<>();
             scenesJson.pathToScenes().forEach((key, value) -> {
                 try {
