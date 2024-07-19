@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 /**
- * Запись, представляющая собой структура JSON файла для парсинга
+ * Запись, представляющая собой структуру JSON файла для парсинга
  * @param pathToScenes Словарь с путями до сцен
  */
 public record ScenesJson (
