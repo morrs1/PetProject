@@ -25,7 +25,7 @@ public class FileSaver {
         if (file != null) {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(resizeImage(image, width, height), null),
-                        "png", file);
+                        extension, file);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -34,7 +34,7 @@ public class FileSaver {
 
     private static void setupFileChooser(String extension) {
         ExtensionFilter extFilter = new ExtensionFilter(
-                String.format("PNG files (*.%s)", extension), String.format("*.%s", extension));
+                String.format("%s files (*.%s)",extension.toUpperCase(), extension), String.format("*.%s", extension));
         fileChooser.getExtensionFilters().add(extFilter);
     }
 
