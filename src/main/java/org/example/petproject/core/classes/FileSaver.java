@@ -25,7 +25,7 @@ public class FileSaver {
         if (file != null) {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(resizeImage(image, width, height), null),
-                        extension, file);
+                        "png", file);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
