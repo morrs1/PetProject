@@ -6,6 +6,7 @@
     "secondTaskWindow": "FXMLs/secondTaskWindow.fxml",
     "thirdTaskWindow": "FXMLs/thirdTaskWindow.fxml",
     "fourthTaskWindow": "FXMLs/fourthTaskWindow.fxml",
-    "fifthTaskWindow" : "FXMLs/fifthTaskWindow.fxml"
+    "fifthTaskWindow" : "FXMLs/fifthTaskWindow.fxml",
+    "sixthTaskWindow" : "FXMLs/sixthTaskWindow.fxml"
   }
 }
