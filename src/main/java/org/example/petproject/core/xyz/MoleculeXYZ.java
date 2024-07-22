@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public record MoleculeXYZ(Integer amountOfAtoms, String descriptionOfMolecule,
-                          LinkedHashMap<String, ArrayList<ArrayList<Double>>> descriptionOfAtoms) {
+                          LinkedHashMap<String, ArrayList<Atom>> descriptionOfAtoms) {
 
     public static Cylinder createConnection(Point3D origin, Point3D target) {
         Point3D yAxis = new Point3D(0, 1, 0);

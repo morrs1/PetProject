@@ -37,16 +37,16 @@ public class SixTaskController extends BaseController {
             for (var value1 : molecule.descriptionOfAtoms().values()) {
                 for (var index = 0; index < value1.size() - 1; index++) {
                     anchorPaneForMolecule.getChildren().add(
-                            MoleculeXYZ.createConnection(new Point3D(widthOfPane / 2 + value1.get(index).getFirst()
-                                            , heightOfPane / 2 - value1.get(index).get(1), value1.get(index).get(2))
-                                    , new Point3D(widthOfPane / 2 + value1.get(index + 1).getFirst()
-                                            , heightOfPane / 2 - value1.get(index + 1).get(1), value1.get(index + 1).get(2))));
+                            MoleculeXYZ.createConnection(new Point3D(widthOfPane / 2 + value1.get(index).getX()
+                                            , heightOfPane / 2 - value1.get(index).getY(), value1.get(index).getZ())
+                                    , new Point3D(widthOfPane / 2 + value1.get(index + 1).getX()
+                                            , heightOfPane / 2 - value1.get(index + 1).getY(), value1.get(index + 1).getZ())));
                 }
             }
             Sphere sphere = new Sphere(30);
-            sphere.setTranslateX(widthOfPane / 2 + atom.getFirst());
-            sphere.setTranslateY(heightOfPane / 2 - atom.get(1));
-            sphere.setTranslateZ(atom.get(2));
+            sphere.setTranslateX(widthOfPane / 2 + atom.getX());
+            sphere.setTranslateY(heightOfPane / 2 - atom.getY());
+            sphere.setTranslateZ(atom.getZ());
             sphere.setMaterial(new PhongMaterial(Color.BLUE));
 
             anchorPaneForMolecule.getChildren().add(sphere);
