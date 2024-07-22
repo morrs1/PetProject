@@ -39,6 +39,7 @@ public class FileSaver {
                 String.format("%s files (*.%s)", extension.toUpperCase(), extension),
                 String.format("*.%s", extension)
         );
+        fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().add(extFilter);
     }
 

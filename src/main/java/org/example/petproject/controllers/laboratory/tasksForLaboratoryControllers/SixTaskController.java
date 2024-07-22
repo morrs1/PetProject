@@ -44,20 +44,22 @@ public class SixTaskController extends BaseController implements Initializable {
     AnchorPane mainAnchorPaneForMolecule;
     @FXML
     ComboBox<String> comboBoxForFiles;
-
+    @FXML
+    ComboBox<String> comboBoxForExtension;
     private MoleculeXYZ molecule;
     private AnchorPane paneForMolecule;
     private PerspectiveCamera camera;
 
     @FXML
     protected void onSaveButtonClick() {
-        System.out.println("dsdas");
-        FileSaver.saveFile(
-                paneForMolecule.snapshot(null, null),
-                "jpg",
-                (int) paneForMolecule.getWidth(),
-                (int) paneForMolecule.getHeight());
-        paneForMolecule.requestFocus();
+        if(comboBoxForExtension.getValue()!=null) {
+            FileSaver.saveFile(
+                    paneForMolecule.snapshot(null, null),
+                    comboBoxForExtension.getValue(),
+                    (int) paneForMolecule.getWidth(),
+                    (int) paneForMolecule.getHeight());
+            paneForMolecule.requestFocus();
+        }
     }
 
     @FXML
@@ -138,7 +140,9 @@ public class SixTaskController extends BaseController implements Initializable {
             });
         });
         comboBoxForFiles.getItems().add("xyz1");
-
+        comboBoxForExtension.getItems().add("png");
+        comboBoxForExtension.getItems().add("jpg");
+        comboBoxForExtension.getItems().add("gif");
     }
 
     private void handleScroll(ScrollEvent event) {
