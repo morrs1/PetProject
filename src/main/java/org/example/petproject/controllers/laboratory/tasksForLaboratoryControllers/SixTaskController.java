@@ -29,6 +29,7 @@ import javafx.scene.transform.Rotate;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.controllers.SceneController;
 
+import org.example.petproject.core.classes.FileSaver;
 import org.example.petproject.core.classes.SceneLoader;
 import org.example.petproject.core.enums.Scenes;
 import org.example.petproject.core.xyz.MoleculeXYZ;
@@ -47,6 +48,17 @@ public class SixTaskController extends BaseController implements Initializable {
     private MoleculeXYZ molecule;
     private AnchorPane paneForMolecule;
     private PerspectiveCamera camera;
+
+    @FXML
+    protected void onSaveButtonClick() {
+        System.out.println("dsdas");
+        FileSaver.saveFile(
+                paneForMolecule.snapshot(null, null),
+                "jpg",
+                (int) paneForMolecule.getWidth(),
+                (int) paneForMolecule.getHeight());
+        paneForMolecule.requestFocus();
+    }
 
     @FXML
     protected void onComboBoxValueClick() {
@@ -113,7 +125,7 @@ public class SixTaskController extends BaseController implements Initializable {
             subScene.getScene().setOnScroll(this::handleScroll);
             System.out.println(camera.getNearClip());
             camera.setFarClip(1000);
-            subScene.setOnKeyPressed((KeyEvent event) -> {
+            subScene.getScene().setOnKeyPressed((KeyEvent event) -> {
                 if (event.getCode() == KeyCode.DOWN) {
                     paneForMolecule.getTransforms().add(new Rotate(5, Rotate.Y_AXIS));
                 }
