@@ -15,6 +15,7 @@ public class ParserXYZ {
     public static MoleculeXYZ parseXYZ(String pathToXYZ) {
         ArrayList<String> lines = readAllLinesOfFile(pathToXYZ);
         LinkedHashMap<String, ArrayList<Atom>> descriptionOfAtoms = new LinkedHashMap<>();
+        ArrayList<Atom> allAtoms = new ArrayList<>();
         IntStream.range(2, lines.size()).forEach(indexOfRow -> {
             String typeOfAtom = lines.get(indexOfRow).substring(0, 1);
             List<String> coordinatesAsString = Arrays.asList(lines.get(indexOfRow).substring(2).split(" "));
@@ -32,9 +33,10 @@ public class ParserXYZ {
             } else {
                 descriptionOfAtoms.get(typeOfAtom).add(atom);
             }
+            allAtoms.add(atom);
 
         });
-        return new MoleculeXYZ(Integer.parseInt(lines.getFirst()), lines.get(1), descriptionOfAtoms);
+        return new MoleculeXYZ(Integer.parseInt(lines.getFirst()), lines.get(1), descriptionOfAtoms, allAtoms);
     }
 
     private static ArrayList<String> readAllLinesOfFile(String pathToXYZ) {

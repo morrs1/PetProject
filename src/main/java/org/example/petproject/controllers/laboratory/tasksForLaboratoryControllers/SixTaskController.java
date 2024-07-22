@@ -52,7 +52,7 @@ public class SixTaskController extends BaseController {
             anchorPaneForMolecule.getChildren().add(sphere);
 
         }));
-
+        molecule.allAtoms().forEach(System.out::println);
         SceneController.getInstance().getStage().getScene().setCamera(new PerspectiveCamera());
 
     }
