@@ -70,6 +70,8 @@ public class SixTaskController extends BaseController implements Initializable {
         System.out.println(comboBoxForFiles.getValue());
         paneForMolecule.getChildren().clear();
         molecule = ParserXYZ.parseXYZ("src/main/resources/org/example/petproject/XYZs/"+ comboBoxForFiles.getValue() +".xyz");
+        molecule.setColorOfAtomsByType();
+        molecule.reColorAtoms();
         molecule.descriptionOfAtoms().forEach((key, value) -> value.forEach(atom -> {
             Sphere sphere = new Sphere(50);
             sphere.setTranslateX(widthOfPane / 2 + atom.getX());
@@ -100,7 +102,7 @@ public class SixTaskController extends BaseController implements Initializable {
         }
         molecule.allAtoms().forEach(System.out::println);
 //        SceneController.getInstance().getStage().getScene().setCamera(new PerspectiveCamera());
-        System.out.println(molecule.getColorOfAtomsByType());
+
         paneForMolecule.requestFocus();
         paneForMolecule.setStyle("-fx-background-color: transparent;");
     }

@@ -6,11 +6,9 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Cylinder;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
+import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Random;
+import java.util.*;
 
 public record MoleculeXYZ(
         Integer amountOfAtoms,
@@ -19,6 +17,7 @@ public record MoleculeXYZ(
         ArrayList<Atom> allAtoms
 ) {
 
+    private static final HashMap<String, String> colorsOfAtomsByType = new HashMap<>();
     public static Cylinder createConnection(Point3D origin, Point3D target) {
         Point3D yAxis = new Point3D(0, 1, 0);
         Point3D diff = target.subtract(origin);
@@ -36,8 +35,7 @@ public record MoleculeXYZ(
         return line;
     }
 
-    public HashMap<String, String> getColorOfAtomsByType() {
-        var colorsOfAtomsByType = new HashMap<String, String>();
+    public void setColorOfAtomsByType() {
         descriptionOfAtoms.keySet().forEach(type -> colorsOfAtomsByType.put(type,
                 String.format("%d, %d, %d",
                         new Random().nextInt(250),
@@ -45,6 +43,19 @@ public record MoleculeXYZ(
                         new Random().nextInt(250)
                 )
         ));
+    }
+    private HashMap<String, String> getColorOfAtomsByType() {
         return colorsOfAtomsByType;
+    }
+
+
+    public void reColorAtoms(){
+        System.out.println(getColorOfAtomsByType());
+        allAtoms.forEach(atom -> {
+            System.out.println(getColorOfAtomsByType() + "ffff");
+            String[] rgb = getColorOfAtomsByType().get(atom.getName()).split(", ");
+            System.out.println(Arrays.toString(rgb));
+            atom.setColor(Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])));
+        });
     }
 }
