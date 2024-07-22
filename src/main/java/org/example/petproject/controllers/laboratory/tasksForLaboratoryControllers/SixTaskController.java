@@ -67,18 +67,20 @@ public class SixTaskController extends BaseController implements Initializable {
         double widthOfPane = paneForMolecule.getWidth();
         double heightOfPane = paneForMolecule.getHeight();
         System.out.println(widthOfPane + " " + heightOfPane);
-
-        molecule = ParserXYZ.parseXYZ("src/main/resources/org/example/petproject/XYZs/firstMolecule.xyz");
+        System.out.println(comboBoxForFiles.getValue());
+        paneForMolecule.getChildren().clear();
+        molecule = ParserXYZ.parseXYZ("src/main/resources/org/example/petproject/XYZs/"+ comboBoxForFiles.getValue() +".xyz");
         molecule.descriptionOfAtoms().forEach((key, value) -> value.forEach(atom -> {
             Sphere sphere = new Sphere(50);
             sphere.setTranslateX(widthOfPane / 2 + atom.getX());
             sphere.setTranslateY(heightOfPane / 2 - atom.getY());
             sphere.setTranslateZ(atom.getZ());
-            sphere.setMaterial(new PhongMaterial(Color.BLUE));
+            sphere.setMaterial(new PhongMaterial(atom.getColor()));
 
             paneForMolecule.getChildren().add(sphere);
 
         }));
+        System.out.println(molecule.amountOfAtoms());
         for (var index = 0; index < molecule.amountOfAtoms(); index++) {
             for (var innerIndex = 0; innerIndex < molecule.amountOfAtoms(); innerIndex++) {
                 paneForMolecule.getChildren().add(
@@ -98,6 +100,7 @@ public class SixTaskController extends BaseController implements Initializable {
         }
         molecule.allAtoms().forEach(System.out::println);
 //        SceneController.getInstance().getStage().getScene().setCamera(new PerspectiveCamera());
+        System.out.println(molecule.getColorOfAtomsByType());
         paneForMolecule.requestFocus();
         paneForMolecule.setStyle("-fx-background-color: transparent;");
     }
@@ -139,7 +142,9 @@ public class SixTaskController extends BaseController implements Initializable {
                 }
             });
         });
-        comboBoxForFiles.getItems().add("xyz1");
+        comboBoxForFiles.getItems().add("firstMolecule");
+        comboBoxForFiles.getItems().add("secondMolecule");
+        comboBoxForFiles.getItems().add("thirdMolecule");
         comboBoxForExtension.getItems().add("png");
         comboBoxForExtension.getItems().add("jpg");
         comboBoxForExtension.getItems().add("gif");
