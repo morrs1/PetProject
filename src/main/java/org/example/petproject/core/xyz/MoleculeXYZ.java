@@ -8,7 +8,9 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Random;
 
 public record MoleculeXYZ(
         Integer amountOfAtoms,
@@ -32,5 +34,17 @@ public record MoleculeXYZ(
         line.getTransforms().addAll(moveToMidpoint, rotateAroundCenter);
         line.setMaterial(new PhongMaterial(Color.BLACK));
         return line;
+    }
+
+    public HashMap<String, String> getColorOfAtomsByType() {
+        var colorsOfAtomsByType = new HashMap<String, String>();
+        descriptionOfAtoms.keySet().forEach(type -> colorsOfAtomsByType.put(type,
+                String.format("%d, %d, %d",
+                        new Random().nextInt(250),
+                        new Random().nextInt(250),
+                        new Random().nextInt(250)
+                )
+        ));
+        return colorsOfAtomsByType;
     }
 }
