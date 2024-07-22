@@ -16,6 +16,7 @@ public class ParserXYZ {
         ArrayList<String> lines = readAllLinesOfFile(pathToXYZ);
         LinkedHashMap<String, ArrayList<Atom>> descriptionOfAtoms = new LinkedHashMap<>();
         ArrayList<Atom> allAtoms = new ArrayList<>();
+
         IntStream.range(2, lines.size()).forEach(indexOfRow -> {
             String typeOfAtom = lines.get(indexOfRow).substring(0, 1);
             List<String> coordinatesAsString = Arrays.asList(lines.get(indexOfRow).substring(2).split(" "));

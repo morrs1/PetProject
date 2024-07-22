@@ -20,7 +20,6 @@ import org.example.petproject.core.xyz.MoleculeXYZ;
 import org.example.petproject.core.xyz.ParserXYZ;
 
 
-
 public class SixTaskController extends BaseController {
     @FXML
     AnchorPane anchorPaneForMolecule;
@@ -34,15 +33,6 @@ public class SixTaskController extends BaseController {
         double heightOfPane = anchorPaneForMolecule.getHeight();
         molecule = ParserXYZ.parseXYZ("src/main/resources/org/example/petproject/XYZs/firstMolecule.xyz");
         molecule.descriptionOfAtoms().forEach((key, value) -> value.forEach(atom -> {
-            for (var value1 : molecule.descriptionOfAtoms().values()) {
-                for (var index = 0; index < value1.size() - 1; index++) {
-                    anchorPaneForMolecule.getChildren().add(
-                            MoleculeXYZ.createConnection(new Point3D(widthOfPane / 2 + value1.get(index).getX()
-                                            , heightOfPane / 2 - value1.get(index).getY(), value1.get(index).getZ())
-                                    , new Point3D(widthOfPane / 2 + value1.get(index + 1).getX()
-                                            , heightOfPane / 2 - value1.get(index + 1).getY(), value1.get(index + 1).getZ())));
-                }
-            }
             Sphere sphere = new Sphere(30);
             sphere.setTranslateX(widthOfPane / 2 + atom.getX());
             sphere.setTranslateY(heightOfPane / 2 - atom.getY());
@@ -52,6 +42,23 @@ public class SixTaskController extends BaseController {
             anchorPaneForMolecule.getChildren().add(sphere);
 
         }));
+        for (var index = 0; index < molecule.amountOfAtoms(); index++) {
+            for (var innerIndex = 0; innerIndex < molecule.amountOfAtoms(); innerIndex++) {
+                anchorPaneForMolecule.getChildren().add(
+                        MoleculeXYZ.createConnection(
+                                new Point3D(
+                                        widthOfPane / 2 + molecule.allAtoms().get(index).getX(),
+                                        heightOfPane / 2 - molecule.allAtoms().get(index).getY(),
+                                        molecule.allAtoms().get(index).getZ()
+                                ),
+                                new Point3D(
+                                        widthOfPane / 2 + molecule.allAtoms().get(innerIndex).getX(),
+                                        heightOfPane / 2 - molecule.allAtoms().get(innerIndex).getY(),
+                                        molecule.allAtoms().get(innerIndex).getZ()
+                                )
+                        ));
+            }
+        }
         molecule.allAtoms().forEach(System.out::println);
         SceneController.getInstance().getStage().getScene().setCamera(new PerspectiveCamera());
 
