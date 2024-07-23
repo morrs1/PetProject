@@ -12,6 +12,7 @@ import javafx.scene.SceneAntialiasing;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -49,10 +50,12 @@ public class SixTaskController extends BaseController implements Initializable {
     private MoleculeXYZ molecule;
     private AnchorPane paneForMolecule;
     private PerspectiveCamera camera;
+    @FXML
+    Label labelForDescription;
 
     @FXML
     protected void onSaveButtonClick() {
-        if(comboBoxForExtension.getValue()!=null) {
+        if (comboBoxForExtension.getValue() != null) {
             FileSaver.saveFile(
                     paneForMolecule.snapshot(null, null),
                     comboBoxForExtension.getValue(),
@@ -69,7 +72,7 @@ public class SixTaskController extends BaseController implements Initializable {
         System.out.println(widthOfPane + " " + heightOfPane);
         System.out.println(comboBoxForFiles.getValue());
         paneForMolecule.getChildren().clear();
-        molecule = ParserXYZ.parseXYZ("src/main/resources/org/example/petproject/XYZs/"+ comboBoxForFiles.getValue() +".xyz");
+        molecule = ParserXYZ.parseXYZ("src/main/resources/org/example/petproject/XYZs/" + comboBoxForFiles.getValue() + ".xyz");
         molecule.setColorOfAtomsByType();
         molecule.reColorAtoms();
         molecule.descriptionOfAtoms().forEach((key, value) -> value.forEach(atom -> {
@@ -100,6 +103,8 @@ public class SixTaskController extends BaseController implements Initializable {
                         ));
             }
         }
+
+        labelForDescription.setText(molecule.descriptionOfMolecule());
         molecule.allAtoms().forEach(System.out::println);
 //        SceneController.getInstance().getStage().getScene().setCamera(new PerspectiveCamera());
 
