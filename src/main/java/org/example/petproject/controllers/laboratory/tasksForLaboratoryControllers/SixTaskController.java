@@ -11,6 +11,7 @@ import javafx.scene.PerspectiveCamera;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -37,7 +38,10 @@ import org.example.petproject.core.xyz.MoleculeXYZ;
 import org.example.petproject.core.xyz.ParserXYZ;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
 
 public class SixTaskController extends BaseController implements Initializable {
@@ -52,7 +56,13 @@ public class SixTaskController extends BaseController implements Initializable {
     private PerspectiveCamera camera;
     @FXML
     Label labelForDescription;
-
+    @FXML
+    Label labelForAtom;
+    @FXML
+    ComboBox<String> comboBoxForAtom;
+    @FXML
+    ColorPicker colorPicker;
+    ArrayList<Sphere> listForSpheres = new ArrayList<>();
     @FXML
     protected void onSaveButtonClick() {
         if (comboBoxForExtension.getValue() != null) {
@@ -67,6 +77,8 @@ public class SixTaskController extends BaseController implements Initializable {
 
     @FXML
     protected void onComboBoxValueClick() {
+        comboBoxForAtom.getItems().clear();
+        listForSpheres.clear();
         double widthOfPane = paneForMolecule.getWidth();
         double heightOfPane = paneForMolecule.getHeight();
         System.out.println(widthOfPane + " " + heightOfPane);
@@ -81,10 +93,19 @@ public class SixTaskController extends BaseController implements Initializable {
             sphere.setTranslateY(heightOfPane / 2 - atom.getY());
             sphere.setTranslateZ(atom.getZ());
             sphere.setMaterial(new PhongMaterial(atom.getColor()));
-
+            sphere.setAccessibleText(atom.getName());
+            listForSpheres.add(sphere);
             paneForMolecule.getChildren().add(sphere);
 
         }));
+        IntStream.range(1, listForSpheres.size()+1).forEach(x-> comboBoxForAtom.getItems().add(String.valueOf(x)));
+        comboBoxForAtom.setOnAction((event)->{
+            if (comboBoxForFiles.getValue() != null) {
+                colorPicker.setValue(((PhongMaterial) listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getMaterial()).getDiffuseColor());
+                labelForAtom.setText(listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getAccessibleText());
+            }
+        });
+
         System.out.println(molecule.amountOfAtoms());
         for (var index = 0; index < molecule.amountOfAtoms(); index++) {
             for (var innerIndex = 0; innerIndex < molecule.amountOfAtoms(); innerIndex++) {
@@ -110,6 +131,8 @@ public class SixTaskController extends BaseController implements Initializable {
 
         paneForMolecule.requestFocus();
         paneForMolecule.setStyle("-fx-background-color: transparent;");
+
+
     }
 
     @Override
