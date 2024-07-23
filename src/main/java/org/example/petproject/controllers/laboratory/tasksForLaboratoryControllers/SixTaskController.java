@@ -63,6 +63,7 @@ public class SixTaskController extends BaseController implements Initializable {
     @FXML
     ColorPicker colorPicker;
     ArrayList<Sphere> listForSpheres = new ArrayList<>();
+    Sphere currentSphere;
     @FXML
     protected void onSaveButtonClick() {
         if (comboBoxForExtension.getValue() != null) {
@@ -81,6 +82,7 @@ public class SixTaskController extends BaseController implements Initializable {
         listForSpheres.clear();
         colorPicker.setValue(Color.WHITE);
         labelForAtom.setText("");
+        currentSphere = null;
         double widthOfPane = paneForMolecule.getWidth();
         double heightOfPane = paneForMolecule.getHeight();
         System.out.println(widthOfPane + " " + heightOfPane);
@@ -105,9 +107,15 @@ public class SixTaskController extends BaseController implements Initializable {
             if (comboBoxForAtom.getValue() != null) {
                 colorPicker.setValue(((PhongMaterial) listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getMaterial()).getDiffuseColor());
                 labelForAtom.setText(listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getAccessibleText());
+                currentSphere = listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1);
             }
         });
 
+        colorPicker.setOnAction((event -> {
+            if (colorPicker.getValue() != null && currentSphere!=null) {
+                currentSphere.setMaterial(new PhongMaterial(colorPicker.getValue()));
+            }
+        }));
         System.out.println(molecule.amountOfAtoms());
         for (var index = 0; index < molecule.amountOfAtoms(); index++) {
             for (var innerIndex = 0; innerIndex < molecule.amountOfAtoms(); innerIndex++) {
