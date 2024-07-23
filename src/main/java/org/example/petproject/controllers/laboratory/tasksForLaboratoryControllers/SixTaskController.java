@@ -79,6 +79,8 @@ public class SixTaskController extends BaseController implements Initializable {
     protected void onComboBoxValueClick() {
         comboBoxForAtom.getItems().clear();
         listForSpheres.clear();
+        colorPicker.setValue(Color.WHITE);
+        labelForAtom.setText("");
         double widthOfPane = paneForMolecule.getWidth();
         double heightOfPane = paneForMolecule.getHeight();
         System.out.println(widthOfPane + " " + heightOfPane);
@@ -100,7 +102,7 @@ public class SixTaskController extends BaseController implements Initializable {
         }));
         IntStream.range(1, listForSpheres.size()+1).forEach(x-> comboBoxForAtom.getItems().add(String.valueOf(x)));
         comboBoxForAtom.setOnAction((event)->{
-            if (comboBoxForFiles.getValue() != null) {
+            if (comboBoxForAtom.getValue() != null) {
                 colorPicker.setValue(((PhongMaterial) listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getMaterial()).getDiffuseColor());
                 labelForAtom.setText(listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getAccessibleText());
             }
