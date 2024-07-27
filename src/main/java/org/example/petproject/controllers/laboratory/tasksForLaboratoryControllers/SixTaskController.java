@@ -2,6 +2,7 @@ package org.example.petproject.controllers.laboratory.tasksForLaboratoryControll
 
 
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
@@ -10,26 +11,20 @@ import javafx.geometry.Point3D;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.SubScene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.paint.PhongMaterial;
 
 import javafx.scene.shape.Sphere;
 
 import javafx.scene.transform.Rotate;
 import org.example.petproject.controllers.BaseController;
-import org.example.petproject.controllers.SceneController;
 
 import org.example.petproject.core.classes.FileSaver;
 import org.example.petproject.core.classes.SceneLoader;
@@ -39,7 +34,6 @@ import org.example.petproject.core.xyz.ParserXYZ;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
@@ -64,6 +58,7 @@ public class SixTaskController extends BaseController implements Initializable {
     ColorPicker colorPicker;
     ArrayList<Sphere> listForSpheres = new ArrayList<>();
     Sphere currentSphere;
+
     @FXML
     protected void onSaveButtonClick() {
         if (comboBoxForExtension.getValue() != null) {
@@ -102,47 +97,43 @@ public class SixTaskController extends BaseController implements Initializable {
             paneForMolecule.getChildren().add(sphere);
 
         }));
-        IntStream.range(1, listForSpheres.size()+1).forEach(x-> comboBoxForAtom.getItems().add(String.valueOf(x)));
-        comboBoxForAtom.setOnAction((event)->{
-            if (comboBoxForAtom.getValue() != null) {
-                colorPicker.setValue(((PhongMaterial) listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getMaterial()).getDiffuseColor());
-                labelForAtom.setText(listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1).getAccessibleText());
-                currentSphere = listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) -1);
-            }
-        });
+        IntStream.range(1, listForSpheres.size() + 1).forEach(x -> comboBoxForAtom.getItems().add(String.valueOf(x)));
 
         colorPicker.setOnAction((event -> {
-            if (colorPicker.getValue() != null && currentSphere!=null) {
+            if (colorPicker.getValue() != null && currentSphere != null) {
                 currentSphere.setMaterial(new PhongMaterial(colorPicker.getValue()));
             }
         }));
         System.out.println(molecule.amountOfAtoms());
-        for (var index = 0; index < molecule.amountOfAtoms(); index++) {
-            for (var innerIndex = 0; innerIndex < molecule.amountOfAtoms(); innerIndex++) {
-                paneForMolecule.getChildren().add(
-                        MoleculeXYZ.createConnection(
-                                new Point3D(
-                                        widthOfPane / 2 + molecule.allAtoms().get(index).getX(),
-                                        heightOfPane / 2 - molecule.allAtoms().get(index).getY(),
-                                        molecule.allAtoms().get(index).getZ()
-                                ),
-                                new Point3D(
-                                        widthOfPane / 2 + molecule.allAtoms().get(innerIndex).getX(),
-                                        heightOfPane / 2 - molecule.allAtoms().get(innerIndex).getY(),
-                                        molecule.allAtoms().get(innerIndex).getZ()
-                                )
-                        ));
-            }
-        }
+        createAllConnections();
 
         labelForDescription.setText(molecule.descriptionOfMolecule());
         molecule.allAtoms().forEach(System.out::println);
-//        SceneController.getInstance().getStage().getScene().setCamera(new PerspectiveCamera());
 
         paneForMolecule.requestFocus();
         paneForMolecule.setStyle("-fx-background-color: transparent;");
 
 
+    }
+
+    private void createAllConnections() {
+        for (var index = 0; index < molecule.amountOfAtoms(); index++) {
+            for (var innerIndex = 0; innerIndex < molecule.amountOfAtoms(); innerIndex++) {
+                paneForMolecule.getChildren().add(
+                        MoleculeXYZ.createConnection(
+                                new Point3D(
+                                        listForSpheres.get(index).getTranslateX(),
+                                        listForSpheres.get(index).getTranslateY(),
+                                        listForSpheres.get(index).getTranslateZ()
+                                ),
+                                new Point3D(
+                                        listForSpheres.get(innerIndex).getTranslateX(),
+                                        listForSpheres.get(innerIndex).getTranslateY(),
+                                        listForSpheres.get(innerIndex).getTranslateZ()
+                                )
+                        ));
+            }
+        }
     }
 
     @Override
@@ -157,31 +148,19 @@ public class SixTaskController extends BaseController implements Initializable {
             subScene.setTranslateY(58);
             System.out.println(subScene.getWidth() + " " + subScene.getHeight());
             camera = new PerspectiveCamera();
-//            camera.setTranslateX(camera.getTranslateX() +100);
-//            camera.setTranslateY(camera.getTranslateY() +100);
+
             camera.setTranslateZ(camera.getTranslateZ() - 1000);
-//            camera.setNearClip(-1000);
-//            camera.setFarClip(1000);
+
             subScene.setCamera(camera);
             paneForMolecule.setStyle("-fx-background-color:  #A9A9A9");
             root.getChildren().add(subScene);
-//            subScene.setOnMousePressed(this::handleMousePressed);
-//            subScene.setOnMouseDragged(this::handleMouseDragged);
+
             subScene.getScene().setOnScroll(this::handleScroll);
             System.out.println(camera.getNearClip());
             camera.setFarClip(1000);
-            subScene.getScene().setOnKeyPressed((KeyEvent event) -> {
-                if (event.getCode() == KeyCode.DOWN) {
-                    paneForMolecule.getTransforms().add(new Rotate(5, Rotate.Y_AXIS));
-                }
-                if (event.getCode() == KeyCode.UP) {
-                    paneForMolecule.getTransforms().add(new Rotate(5, Rotate.X_AXIS));
-                }
-                if (event.getCode() == KeyCode.LEFT) {
-                    paneForMolecule.getTransforms().add(new Rotate(5, Rotate.Z_AXIS));
-                }
-            });
+            subScene.getScene().setOnKeyPressed(this::subSceneOnKeyPressed);
         });
+        comboBoxForAtom.setOnAction(this::comboBoxForAtomValueClicked);
         comboBoxForFiles.getItems().add("firstMolecule");
         comboBoxForFiles.getItems().add("secondMolecule");
         comboBoxForFiles.getItems().add("thirdMolecule");
@@ -201,6 +180,26 @@ public class SixTaskController extends BaseController implements Initializable {
                 paneForMolecule.setScaleY(paneForMolecule.getScaleY() - 0.05);
                 paneForMolecule.setScaleZ(paneForMolecule.getScaleZ() - 0.05);
             }
+        }
+    }
+
+    private void comboBoxForAtomValueClicked(Event event) {
+        if (comboBoxForAtom.getValue() != null) {
+            colorPicker.setValue(((PhongMaterial) listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) - 1).getMaterial()).getDiffuseColor());
+            labelForAtom.setText(listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) - 1).getAccessibleText());
+            currentSphere = listForSpheres.get(Integer.parseInt(comboBoxForAtom.getValue()) - 1);
+        }
+    }
+
+    private void subSceneOnKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.DOWN) {
+            paneForMolecule.getTransforms().add(new Rotate(5, Rotate.Y_AXIS));
+        }
+        if (event.getCode() == KeyCode.UP) {
+            paneForMolecule.getTransforms().add(new Rotate(5, Rotate.X_AXIS));
+        }
+        if (event.getCode() == KeyCode.LEFT) {
+            paneForMolecule.getTransforms().add(new Rotate(5, Rotate.Z_AXIS));
         }
     }
 }
