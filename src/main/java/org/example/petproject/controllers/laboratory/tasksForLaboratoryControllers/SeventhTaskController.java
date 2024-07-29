@@ -35,9 +35,8 @@ public class SeventhTaskController extends BaseController implements Initializab
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setVolume(0.5);
             mediaViewForSeventhTask.setMediaPlayer(mediaPlayer);
-            mediaPlayer.setOnReady(() -> {
-                labelForVideoDuration.setText("--:-- / " + formatDuration(media.getDuration()));
-            });
+            mediaPlayer.setOnReady(() ->
+                    labelForVideoDuration.setText("--:-- / " + formatDuration(media.getDuration())));
         });
         sliderForVolume.setValue(50);
         onSliderChangeValue();
