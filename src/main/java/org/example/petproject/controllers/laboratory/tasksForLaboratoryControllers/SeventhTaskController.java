@@ -3,13 +3,12 @@ package org.example.petproject.controllers.laboratory.tasksForLaboratoryControll
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import org.example.petproject.controllers.BaseController;
 
-import java.awt.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +16,8 @@ import java.util.ResourceBundle;
 public class SeventhTaskController extends BaseController implements Initializable {
     @FXML
     MediaView mediaViewForSeventhTask;
+    @FXML
+    Slider sliderForVolume;
 
     private final String pathToVideo = "src/main/resources/org/example/petproject/Videos/firstVideo.mp4";
 
@@ -26,17 +27,27 @@ public class SeventhTaskController extends BaseController implements Initializab
             File file = new File(pathToVideo);
             Media media = new Media(file.toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setVolume(0.5);
             mediaViewForSeventhTask.setMediaPlayer(mediaPlayer);
-        });
 
+        });
+        sliderForVolume.setValue(50);
+        onSliderChangeValue();
     }
 
     @FXML
     protected void onPlayButtonClicked() {
         mediaViewForSeventhTask.getMediaPlayer().play();
     }
+
     @FXML
-    protected void onStopButtonClicked(){
+    protected void onStopButtonClicked() {
         mediaViewForSeventhTask.getMediaPlayer().pause();
+    }
+
+    private void onSliderChangeValue(){
+        sliderForVolume.valueProperty().addListener((observable, oldValue, newValue) -> {
+            mediaViewForSeventhTask.getMediaPlayer().setVolume(newValue.doubleValue()/100);
+        });
     }
 }

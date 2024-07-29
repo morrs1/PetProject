@@ -26,7 +26,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Slider layoutX="465.0" layoutY="23.0" />
+                  <Slider fx:id="sliderForVolume" layoutX="465.0" layoutY="23.0" showTickLabels="true" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="382.0" prefWidth="700.0">
