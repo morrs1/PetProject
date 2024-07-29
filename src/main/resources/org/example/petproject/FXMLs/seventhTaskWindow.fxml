@@ -21,7 +21,7 @@
                <children>
                   <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#onPlayButtonClicked" text="Play" />
                   <Button layoutX="67.0" layoutY="17.0" mnemonicParsing="false" onAction="#onStopButtonClicked" text="Stop" />
-                  <Label layoutX="129.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0">
+                  <Label fx:id="labelForVideoDuration" layoutX="129.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0">
                      <font>
                         <Font size="15.0" />
                      </font>
