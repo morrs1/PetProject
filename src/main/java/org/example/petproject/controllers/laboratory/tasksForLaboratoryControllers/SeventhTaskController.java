@@ -37,19 +37,23 @@ public class SeventhTaskController extends BaseController implements Initializab
             mediaViewForSeventhTask.setMediaPlayer(mediaPlayer);
             mediaPlayer.setOnReady(() ->
                     labelForVideoDuration.setText("--:-- / " + formatDuration(media.getDuration())));
+
+            AnimationTimer timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    labelForVideoDuration.setText(
+                            formatDuration(mediaViewForSeventhTask.getMediaPlayer().getCurrentTime()) +
+                                    " / " +
+                                    formatDuration(media.getDuration())
+                    );
+                }
+            };
+            timer.start();
         });
         sliderForVolume.setValue(50);
         onSliderChangeValue();
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                labelForVideoDuration.setText(
-                        formatDuration(mediaViewForSeventhTask.getMediaPlayer().getCurrentTime()) +
-                                labelForVideoDuration.getText().substring(5)
-                );
-            }
-        };
-        timer.start();
+
+
     }
 
     @FXML
