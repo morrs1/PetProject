@@ -2,7 +2,6 @@ package org.example.petproject.controllers.laboratory;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import org.example.petproject.controllers.BaseController;
 import org.example.petproject.controllers.SceneController;
@@ -29,9 +28,6 @@ public class LaboratoryWindowController extends BaseController {
             default -> throw new IllegalStateException("Unexpected value: " + numberOfTask);
         };
         SceneController.getInstance().setScene(sceneToSwitch);
-        SceneController.getInstance().getStage().getScene().setOnKeyPressed(keyEvent -> {
-            if(keyEvent.getCode() == KeyCode.ESCAPE) SceneController.getInstance().setPreviousScene();
-        });
     }
 
 }
