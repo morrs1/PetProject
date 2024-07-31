@@ -1,6 +1,7 @@
 package org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -55,15 +56,24 @@ public class SeventhTaskController extends BaseController implements Initializab
     @FXML
     protected void onChooseFileButtonClicked() {
         File videoFile = fileChooser.showOpenDialog(SceneController.getInstance().getStage());
-        Media media = new Media(videoFile.toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setVolume(0.5);
-        mediaViewForSeventhTask.setMediaPlayer(mediaPlayer);
-        mediaPlayer.setOnReady(() ->
-                labelForVideoDuration.setText("--:-- / " + formatDuration(media.getDuration()))
-        );
-        setupTimer(media);
-        chooseFileButton.setText(videoFile.getName());
+        new Thread(() -> {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException("Косяк с прогрузкой видоса", e);
+            }
+            Media media = new Media(videoFile.toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setVolume(0.5);
+            mediaViewForSeventhTask.setMediaPlayer(mediaPlayer);
+            mediaPlayer.setOnReady(() ->
+                    labelForVideoDuration.setText("--:-- / " + formatDuration(media.getDuration()))
+            );
+            setupTimer(media);
+            Platform.runLater(()-> chooseFileButton.setText(videoFile.getName()));
+
+        }).start();
+
     }
 
     private void onSliderChangeValue() {
