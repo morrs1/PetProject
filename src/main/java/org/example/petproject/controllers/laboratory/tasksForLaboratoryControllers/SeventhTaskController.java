@@ -55,24 +55,33 @@ public class SeventhTaskController extends BaseController implements Initializab
 
     @FXML
     protected void onChooseFileButtonClicked() {
+        if (mediaViewForSeventhTask.getMediaPlayer() != null) {
+            mediaViewForSeventhTask.getMediaPlayer().stop();
+            mediaViewForSeventhTask.getMediaPlayer().dispose();
+        }
         File videoFile = fileChooser.showOpenDialog(SceneController.getInstance().getStage());
-        new Thread(() -> {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException("Косяк с прогрузкой видоса", e);
-            }
-            Media media = new Media(videoFile.toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setVolume(0.5);
-            mediaViewForSeventhTask.setMediaPlayer(mediaPlayer);
-            mediaPlayer.setOnReady(() ->
-                    labelForVideoDuration.setText("--:-- / " + formatDuration(media.getDuration()))
-            );
-            setupTimer(media);
-            Platform.runLater(()-> chooseFileButton.setText(videoFile.getName()));
+        if (videoFile != null) {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException("Косяк с прогрузкой видоса", e);
+                }
+                Media media = new Media(videoFile.toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setVolume(0.5);
+                mediaViewForSeventhTask.setMediaPlayer(mediaPlayer);
+                mediaPlayer.setOnReady(() ->
+                        labelForVideoDuration.setText("--:-- / " + formatDuration(media.getDuration()))
+                );
+                setupTimer(media);
+                Platform.runLater(() -> {
+                    chooseFileButton.setText(videoFile.getName());
+                    sliderForVolume.setValue(50);
+                });
 
-        }).start();
+            }).start();
+        }
 
     }
 
