@@ -30,15 +30,16 @@ public class SeventhTaskController extends BaseController implements Initializab
     Label labelForVideoDuration;
     @FXML
     Button chooseFileButton;
+
     private FileChooser fileChooser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Video Files", "*.mp4"));
-        fileChooser.setInitialDirectory(
-                new File("C:\\Users\\grish\\IdeaProjects\\PetProject\\src\\main\\resources\\org\\example\\petproject\\Videos")
-        );
+        String PATH_TO_INITIAL_DIRECTORY =
+                "C:\\Users\\grish\\IdeaProjects\\PetProject\\src\\main\\resources\\org\\example\\petproject\\Videos";
+        fileChooser.setInitialDirectory(new File(PATH_TO_INITIAL_DIRECTORY));
         sliderForVolume.setValue(50);
         onSliderChangeValue();
     }
@@ -87,9 +88,12 @@ public class SeventhTaskController extends BaseController implements Initializab
 
     private void onSliderChangeValue() {
         sliderForVolume.valueProperty().addListener(
-                (observable, oldValue, newValue) ->
-                        mediaViewForSeventhTask.getMediaPlayer().setVolume(newValue.doubleValue() / 100)
+                (observable, oldValue, newValue) -> {
+                    if (mediaViewForSeventhTask.getMediaPlayer() != null)
+                        mediaViewForSeventhTask.getMediaPlayer().setVolume(newValue.doubleValue() / 100);
+                }
         );
+
     }
 
     private String formatDuration(Duration duration) {
