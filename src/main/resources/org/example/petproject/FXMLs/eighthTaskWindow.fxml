@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.FXMLs.EightTaskWindow">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers.EighthTaskController">
    <children>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" style="-fx-background-color: #000000;">
          <children>

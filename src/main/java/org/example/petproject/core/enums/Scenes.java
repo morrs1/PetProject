@@ -17,6 +17,7 @@ public enum Scenes {
     FOURTH_TASK_WINDOW("fourthTaskWindow"),
     FIFTH_TASK_WINDOW("fifthTaskWindow"),
     SIXTH_TASK_WINDOW("sixthTaskWindow"),
-    SEVENTH_TASK_WINDOW("seventhTaskWindow");
+    SEVENTH_TASK_WINDOW("seventhTaskWindow"),
+    EIGHTH_TASK_WINDOW("eighthTaskWindow");
     private final String name;
 }
