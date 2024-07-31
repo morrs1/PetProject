@@ -80,8 +80,6 @@ public class SixTaskController extends BaseController implements Initializable {
         currentSphere = null;
         double widthOfPane = paneForMolecule.getWidth();
         double heightOfPane = paneForMolecule.getHeight();
-        System.out.println(widthOfPane + " " + heightOfPane);
-        System.out.println(comboBoxForFiles.getValue());
         paneForMolecule.getChildren().clear();
         molecule = ParserXYZ.parseXYZ("src/main/resources/org/example/petproject/XYZs/" + comboBoxForFiles.getValue() + ".xyz");
         molecule.setColorOfAtomsByType();
@@ -104,11 +102,9 @@ public class SixTaskController extends BaseController implements Initializable {
                 currentSphere.setMaterial(new PhongMaterial(colorPicker.getValue()));
             }
         }));
-        System.out.println(molecule.amountOfAtoms());
         createAllConnections();
 
         labelForDescription.setText(molecule.descriptionOfMolecule());
-        molecule.allAtoms().forEach(System.out::println);
 
         paneForMolecule.requestFocus();
         paneForMolecule.setStyle("-fx-background-color: transparent;");
@@ -146,7 +142,6 @@ public class SixTaskController extends BaseController implements Initializable {
                     442, true, SceneAntialiasing.BALANCED
             );
             subScene.setTranslateY(58);
-            System.out.println(subScene.getWidth() + " " + subScene.getHeight());
             camera = new PerspectiveCamera();
 
             camera.setTranslateZ(camera.getTranslateZ() - 1000);
@@ -156,7 +151,6 @@ public class SixTaskController extends BaseController implements Initializable {
             root.getChildren().add(subScene);
 
             subScene.getScene().setOnScroll(this::handleScroll);
-            System.out.println(camera.getNearClip());
             camera.setFarClip(1000);
             subScene.getScene().setOnKeyPressed(this::subSceneOnKeyPressed);
         });
