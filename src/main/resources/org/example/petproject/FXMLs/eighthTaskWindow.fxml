@@ -7,7 +7,6 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.tasksForLaboratoryControllers.EighthTaskController">
    <children>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" style="-fx-background-color: #000000;">
@@ -18,14 +17,14 @@
       </AnchorPane>
       <AnchorPane layoutY="400.0" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #919191;">
          <children>
-            <Button layoutX="55.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Fade In" />
-            <Button layoutX="185.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Fade Out" />
-            <Button layoutX="315.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Rotate" />
-            <Button layoutX="445.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Move" />
-            <Button layoutX="575.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Scale" />
+            <Button layoutX="55.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" onAction="#onFadeOutButtonClicked" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Fade Out" />
+            <Button layoutX="185.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" onAction="#onFadeInButtonClicked" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Fade In" />
+            <Button layoutX="315.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" onAction="#onRotateButtonClicked" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Rotate" />
+            <Button layoutX="445.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" onAction="#onMoveButtonClicked" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Move" />
+            <Button layoutX="575.0" layoutY="37.0" maxWidth="70.0" mnemonicParsing="false" onAction="#onScaleButtonClicked" prefWidth="70.0" stylesheets="@../CSSs/buttonSecondTask.css" text="Scale" />
          </children>
       </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="250.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+      <Rectangle fx:id="shapeForAnimation" arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="250.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.5909090624614196" startY="0.3901515585003477">
                <stops>
