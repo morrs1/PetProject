@@ -26,6 +26,7 @@ public class LaboratoryWindowController extends BaseController {
             case "6" -> Scenes.SIXTH_TASK_WINDOW;
             case "7" -> Scenes.SEVENTH_TASK_WINDOW;
             case "8" -> Scenes.EIGHTH_TASK_WINDOW;
+            case"9"-> Scenes.NINTH_TASK_WINDOW;
             default -> throw new IllegalStateException("Unexpected value: " + numberOfTask);
         };
         SceneController.getInstance().setScene(sceneToSwitch);
