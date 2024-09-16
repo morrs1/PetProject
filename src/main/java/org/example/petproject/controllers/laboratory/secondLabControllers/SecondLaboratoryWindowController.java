@@ -12,7 +12,6 @@ import org.example.petproject.model.secondLaboratoryRequests.RequestSender;
 import java.io.IOException;
 import java.net.*;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SecondLaboratoryWindowController extends BaseController implements Initializable {
