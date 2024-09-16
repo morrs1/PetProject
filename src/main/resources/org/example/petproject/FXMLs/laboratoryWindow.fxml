@@ -62,6 +62,7 @@
                </children>
             </GridPane>
             <Button layoutX="620.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" text="9" />
+            <Button fx:id="secondLabButton" layoutX="516.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onTaskButtonClick" text="2 laba" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="108.0" fitWidth="246.0" layoutX="242.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
