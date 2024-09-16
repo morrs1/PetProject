@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.example.petproject.controllers.BaseController;
-;
+import org.example.petproject.model.ninthTask.PointsDrawer;
 
 public class NinthTaskController extends BaseController {
     @FXML
@@ -17,6 +17,10 @@ public class NinthTaskController extends BaseController {
 
     @FXML
     protected void onButtonForPaintPointsClicked() {
-        paneForPoints.getChildren().add(new javafx.scene.control.Label(textFieldForAmountOfPoints.getText()));
+        var amountOfPoints = Integer.parseInt(textFieldForAmountOfPoints.getText());
+        if(amountOfPoints > 0 ){
+            PointsDrawer.draw(amountOfPoints, paneForPoints);
+        }
+
     }
 }
