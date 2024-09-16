@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petproject.controllers.laboratory.secondLabControllers.SecondLaboratoryWindowController">
    <children>
@@ -12,5 +13,8 @@
             <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToMenuButtonClick" prefHeight="26.0" prefWidth="26.0" stylesheets="@../CSSs/backButton.css" />
          </children>
       </AnchorPane>
+      <ComboBox fx:id="comboBoxForTypeOfRequest" layoutX="14.0" layoutY="431.0" prefWidth="80.0" promptText="Type" />
+      <TextField fx:id="textFieldForRequest" layoutX="215.0" layoutY="430.0" prefHeight="26.0" prefWidth="269.0" promptText="URL" />
+      <Button fx:id="enterButtonForRequest" layoutX="606.0" layoutY="431.0" mnemonicParsing="false" onAction="#enterButtonForRequestClicked" prefWidth="80.0" text="Enter" />
    </children>
 </AnchorPane>

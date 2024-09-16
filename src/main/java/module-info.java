@@ -7,6 +7,7 @@ module org.example.petproject {
     requires javafx.swing;
     requires java.rmi;
     requires javafx.media;
+    requires java.net.http;
 
     opens org.example.petproject to javafx.fxml;
     exports org.example.petproject;
